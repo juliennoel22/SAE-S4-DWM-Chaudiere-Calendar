@@ -1,0 +1,82 @@
+
+
+
+
+
+
+of ⁨2⁩
+
+
+
+
+IUT Nancy-Charlemagne BUT Informatique S4 – RA-DWM
+SAE Atelier de développement d’application web
+Semestre 4
+Sujet Javascript – développement web client
+L'objectif de la SAE est de développer une application web et mobile se composant
+• d’un backend gérant des données et proposant des services accessibles pour certains via une
+interface HTML et pour d’autres via une api retournant des données au format JSON. Le
+backend est dockerisé.
+• d’une application web construite en javascript, consommant les données JSON proposées par
+l’api, et permettant de consulter et naviguer dans les données,
+• d’une application mobile construite en flutter, consommant les données JSON proposées par
+l’api, et permettant de consulter et naviguer dans les données.
+Cette SAE permet de mettre en application des connaissances et des techniques issues de la
+virtualisation, de l’architecture, de la gestion de données, de la programmation web, de la
+programmation mobile.
+Sujet de travail Architecture : LaChaudièreAgenda.web
+L’objectif est de développer LaChaudiereAgenda.web, une webapp monopage fonctionnant dans le
+navigateur et permettant de parcourir, rechercher et visualiser les items présents dans l’agenda
+d’évènements culturels de La Chaudière, offerts au travers de l’API LaChaudièreAgenda.core.
+L’application doit permettre d’afficher des listes d’événements par catégories, puis d’afficher le détail
+d’un événement en cliquant sur un élément de la liste. L’application effectue des requêtes
+asynchrones vers l’api LaChaudièreAgenda.core, récupère les données en format JSON et les insère
+dans l’interface web. C’est elle qui réalise la conversion des descriptions d’événements du markdown
+vers du HTML.
+LaChaudièreAgenda.web doit être hébergée et servie par un serveur web intégré à la composition de
+services docker de LaChaudièreAgenda.core.
+Fonctionnalités détaillées :
+Navigation 1, 2, 3, 5
+Affichage 4
+Fonctions étendues : tri, filtrage, préférés 6, 7, 8
+Les fonctions étendues sont à réaliser lorsque toutes les autres sont finalisées.
+1) Affichage de la liste des événements du mois courant. Pour chaque événement on affiche le titre,
+l’artiste, la date et la catégorie.
+2) Filtrage de la liste d’événements par catégorie,
+3) Affichage de la liste des catégories, un click sur une catégorie permet d’accéder à la liste
+d’événements de la catégorie pour le mois courant.
+4) Affichage complet d’un événement.
+5) Extension de l’affichage des listes d’événements aux événements passés ou futurs.
+6) Tri des listes par date ascendante ou descendante, par titre.
+7) Affichage de l’image associée à un événement si elle est présente.
+8) Événements préférés : l’utilisateur peut marquer ses événements préférés et les retrouver dans
+l’application (mémorisation dans le local storage)
+Rendus et évaluation
+Le projet doit être rendu au plus tard le samedi 14 juin 2025, 12h. Il est attendu, dans l’espace arche
+prévu à cet effet, un dépôt d’un document pdf comprenant :
+• Noms et prénoms des membres du groupe,
+• url du dépôt git public contenant le code,
+• url de l’application installée sur docketu.iutnc.univ-lorraine.fr
+Démonstration : la démonstration du projet devra montrer l’utilisation de l’application web pour
+parcourir l’agenda des événements de La Chaudière. La démonstration doit être préparée : un jeu de
+données réalistes doit être disponible dans l’application. Il est recommandé d’utiliser un générateur
+de données du type FakerPHP/faker.
+Critères d’évaluation du projet :
+Architecture Modules, import/export 25%
+Utilisation des modules javascript pour
+structurer le code – les modules ont un
+rôle clairement identifié. Séparation
+affichage-fonctionnalités-requêtes
+code Classes, fonctions 25%
+Programmation utilisant les spécificités
+JS : classes et constructeurs, objets,
+fonctions sur les tableaux.
+Appels
+asynchrones Fetch et promesses 25%
+Utilisation des promesses pour les
+appels asynchrones vers l’api,
+traitement des erreurs.
+DOM / templates Manipulation de l’interface 25%
+Manipulation du DOM, gestion des
+listeners et des événements, séparation
+JS-CSS, utilisation de templates

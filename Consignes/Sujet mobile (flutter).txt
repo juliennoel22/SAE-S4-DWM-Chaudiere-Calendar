@@ -1,0 +1,88 @@
+
+
+
+
+
+
+of ⁨2⁩
+
+
+
+
+IUT Nancy-Charlemagne BUT Informatique S4 – RA-DWM
+SAE Atelier de développement d’application web
+Semestre 4
+Sujet Flutter – développement d’une application mobile
+L'objectif de la SAE est de développer une application web se composant d’un backend gérant des
+données et proposant des services accessibles pour certains via une interface HTML et pour d’autres
+via une api retournant des données au format JSON. Le backend est dockerisé. Les données de l’api
+sont consommées par une application web construite en javascript et par une application mobile
+construite en flutter. Cette SAE permet de mettre en application des connaissances et des techniques
+issues de la virtualisation, de l’architecture, de la gestion de données, de la programmation web, de
+la programmation mobile.
+Sujet de travail Architecture : LaChaudiere.app
+L’objectif est de développer LaChaudiere.app, une application mobile développée avec Flutter et
+permettant de parcourir et visualiser les événements culturels proposés par La Chaudière.
+L’application mobile doit permettre de naviguer dans la liste d’événements gérée par
+LaChaudiereAgenda.core et afficher les détails concernant l’événement sélectionné. L’application
+mobile, de type « master / détail » (cf. projet « ToDo List »), effectue des requêtes asynchrones vers
+l’api LaChaudiereAgenda.core, récupère les données en format JSON et les insère dans l’interface
+utilisateur.
+Dans le but de vous aider à développer l’application mobile demandée, vous pouvez consulter les
+documents suivants :
+1. https://docs.flutter.dev/cookbook/networking/fetch-data
+2. https://codewithandrea.com/articles/parse-json-dart/
+3. https://docs.flutter.dev/cookbook/persistence/sqlite
+4. https://www.youtube.com/watch?v=1OEhIpBIZXM
+5. https://www.youtube.com/watch?v=Fo04xk9gIFo
+Fonctionnalités :
+Personnalisation de l’application 1
+Navigation et affichage 2, 3, 4
+Fonctions étendues : tri, filtrage, thème, SQLite 5, 6, 7, 8
+D’autres fonctionnalités pourront être réalisées lorsque celles de base et celles éténdues auront
+été finalisées.
+1. Création d’une icône personnalisée et d’un « splash screen » pour l’application
+2. Affichage de la liste d’événements dans l’ordre alphabétique. Pour chaque entrée on affiche
+uniquement le titre, la catégorie (ou type d’événement) et la ou les dates.
+3. Recherche d’un événement par le titre (même affichage que ci-dessus).
+4. En cliquant sur un événement, affichage de toutes les informations disponibles (selon le
+paradigme « master / détail »).
+5. Filtrage de la liste d’événements par catégorie.
+6. Tri de la liste d’événements selon :
+a. La date ascendante.
+b. La date descendante.
+c. Le titre (ordre alphabétique).
+d. La catégorie (ordre alphabétique).
+7. Gestion d’un thème « light / dark » via un provider.
+8. Persistance des données via SQLite.
+Rendus et évaluation
+Le projet doit être rendu au plus tard le samedi 14 juin 2025 à 12h. Il est attendu, dans l’espace arche
+prévu à cet effet, un dépôt d’un document pdf comprenant :
+• Noms et prénoms des membres du groupe.
+• Url du dépôt git public contenant le code.
+• Le fichier « README » devra contenir une description détaillée, copies d’écran à
+l’appui, de toutes les fonctionnalités réalisées.
+La démonstration du projet :
+1. Devra montrer l’utilisation de l’application mobile selon la description donnée plus haut.
+2. Devra montrer clairement les fonctionnalités implémentées.
+3. Il doit être possible de visionner sur un vidéoprojecteur l’exécution de l’application sur
+smartphone ou tablette.
+Critères d’évaluation du projet :
+Architecture Modules, import/export 30%
+Utilisation des modules / packages
+« .dart » pour structurer le code – les
+modules ont un rôle clairement
+identifié. Séparation affichage-
+fonctionnalités-requêtes-master-détail…
+Code Classes, fonctions 30%
+Programmation utilisant les spécificités
+Dart / Flutter : classes et constructeurs,
+objets, fonctions, packages...
+Appels
+asynchrones Future, FutureBuilder 20% Mise en place des appels asynchrones
+vers l’api, traitement des erreurs.
+Interface
+utilisateur
+Ergonomie, navigation
+« master / détail » 10% Interface utilisateur ergonomique, bien
+structurée, bien bâtie.
