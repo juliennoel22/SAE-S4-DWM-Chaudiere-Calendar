@@ -1,0 +1,46 @@
+@startuml
+' Configuration
+skinparam classAttributeIconSize 0
+hide circle
+
+entity "users" as users {
+  *id : INT
+  email : VARCHAR(255)
+  password_hash : VARCHAR(255)
+  is_superadmin : BOOLEAN
+  created_at : TIMESTAMP
+}
+
+entity "categories" as categories {
+  *id : INT
+  label : VARCHAR(100)
+  description : TEXT
+  created_at : TIMESTAMP
+}
+
+entity "events" as events {
+  title : VARCHAR(255)
+  *id : INT
+  description_md : TEXT
+  description_html : TEXT
+  price : VARCHAR(50)
+  date_start : DATE
+  date_end : DATE
+  time : TIME
+  published : BOOLEAN
+  created_at : TIMESTAMP
+  category_id : INT
+  created_by : INT
+}
+
+entity "event_images" as event_images {
+  *id : INT
+  event_id : INT
+  url : VARCHAR(255)
+}
+
+users -- events
+categories -- events
+events -- event_images
+
+@enduml
