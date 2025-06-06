@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - La Chaudière Agenda{% endblock %}
+
+{% block content %}
+    <h2>Bienvenue sur La Chaudière Agenda</h2>
+    <p>Consultez les événements culturels à venir, gérez-les facilement via l’administration.</p>
+
+    <ul>
+        <li><a href="{{ path_for('events_list') }}">Voir tous les événements</a></li>
+        <li><a href="{{ path_for('admin_dashboard') }}">Accéder à l’administration</a></li>
+    </ul>
+{% endblock %}

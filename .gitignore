@@ -36,3 +36,6 @@ coverage/
 .idea/
 *.swp
 *.swo
+
+vendor/
+composer.lock

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - La Chaudière{% endblock %}
+
+{% block content %}
+<h2>Événements existants</h2>
+<ul class="list-group mb-4">
+  {% for event in events %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ event.title }}</strong> – {{ event.category }} – {{ event.date|date('d/m/Y') }}
+      </div>
+      <!-- Boutons d’édition/suppression pourraient être ajoutés ici -->
+    </li>
+  {% else %}
+    <li class="list-group-item">Aucun événement</li>
+  {% endfor %}
+</ul>
+
+<h2>Créer un nouvel événement</h2>
+<form method="POST" action="#" class="mb-5">
+  <div class="mb-3">
+    <label class="form-label">Titre</label>
+    <input type="text" class="form-control" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea class="form-control" name="description" rows="3" required></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-control" name="date" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Catégorie</label>
+    <input type="text" class="form-control" name="category" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Créer</button>
+</form>
+{% endblock %}
