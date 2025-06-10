@@ -10,6 +10,7 @@ class User extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
+    protected $keyType = 'int';
     public $timestamps = false;
     protected $fillable = ['email', 'password_hash', 'is_superadmin', 'created_at'];
 

@@ -1,6 +1,4 @@
--- Création de la base
-CREATE DATABASE chaudiere_agenda;
-
+USE calendar_db;
 -- Table des utilisateurs (admin)
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,9 +40,6 @@ CREATE TABLE event_images (
 );
 
 
-
-USE chaudiere_agenda;
-
 -- Utilisateurs
 INSERT INTO users (email, password_hash, is_superadmin)
 VALUES 
@@ -62,10 +57,10 @@ VALUES
 -- Événements
 INSERT INTO events (title, description_md, description_html, price, date_start, date_end, time, category_id, published, created_by)
 VALUES 
-('Jazz Night', 'Soirée jazz avec des musiciens locaux.', '<p>Soirée jazz avec des musiciens locaux.</p>', '10€', '2025-06-15', NULL, '20:00:00', 1, TRUE, 1),
-('Expo Photo Urbaine', 'Une plongée visuelle dans la ville moderne.', '<p>Une plongée visuelle dans la ville moderne.</p>', 'Gratuit', '2025-06-10', '2025-07-10', NULL, 2, TRUE, 1),
-('Conférence IA', 'L\'avenir de l\'intelligence artificielle.', '<p>L\'avenir de l\'intelligence artificielle.</p>', '5€', '2025-06-20', NULL, '18:00:00', 3, TRUE, 2),
-('Théâtre : L\'absurde', 'Une pièce sur le non-sens moderne.', '<p>Une pièce sur le non-sens moderne.</p>', '15€', '2025-06-18', '2025-06-19', '21:00:00', 4, FALSE, 2);
+('Jazz Night', 'Soirée jazz avec des musiciens locaux.', 'Soirée jazz avec des musiciens locaux.', '10€', '2025-06-15', NULL, '20:00:00', 1, TRUE, 1),
+('Expo Photo Urbaine', 'Une plongée visuelle dans la ville moderne.', 'Une plongée visuelle dans la ville moderne.', 'Gratuit', '2025-06-10', '2025-07-10', NULL, 2, TRUE, 1),
+('Conférence IA', 'Lavenir de lintelligence artificielle.', 'Lavenir de lintelligence artificielle.', '5€', '2025-06-20', NULL, '18:00:00', 3, TRUE, 2),
+('Théâtre : Labsurde', 'Une pièce sur le non-sens moderne.', 'Une pièce sur le non-sens moderne', '15€', '2025-06-18', '2025-06-19', '21:00:00', 4, FALSE, 2);
 
 -- Images associées aux événements
 INSERT INTO event_images (event_id, url)

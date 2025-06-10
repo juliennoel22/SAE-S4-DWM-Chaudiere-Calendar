@@ -1,0 +1,34 @@
+<h2>Liste des événements</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Catégorie</th>
+            <th>Date(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>
+                    {% if event.category is defined and event.category %}
+                        {{ event.category.label }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {{ event.date_start|date('d/m/Y') }}
+                    {% if event.date_end %}
+                        - {{ event.date_end|date('d/m/Y') }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun événement trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
