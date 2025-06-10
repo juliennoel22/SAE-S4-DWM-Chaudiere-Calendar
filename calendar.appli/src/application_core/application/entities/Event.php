@@ -1,8 +1,10 @@
 <?php
 
 
-namespace canendar\core\application_core\application\domain\entities;
+namespace calendar\core\application_core\application\entities;
 
+use calendar\core\application_core\application\entities\EventImage;
+use calendar\core\application_core\application\entities\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -11,9 +13,17 @@ class Event extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'title', 'description_md', 'description_html', 'price',
-        'date_start', 'date_end', 'time', 'category_id',
-        'published', 'created_by', 'created_at'
+        'title',
+        'description_md',
+        'description_html',
+        'price',
+        'date_start',
+        'date_end',
+        'time',
+        'category_id',
+        'published',
+        'created_by',
+        'created_at'
     ];
 
     public function category()

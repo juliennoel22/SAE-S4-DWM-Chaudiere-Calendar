@@ -1,7 +1,8 @@
 <?php
 
-namespace canendar\core\application_core\application\domain\entities;
+namespace calendar\core\application_core\application\entities;
 
+use calendar\core\application_core\application\entities\Event;
 use Illuminate\Database\Eloquent\Model;
 
 class EventImage extends Model

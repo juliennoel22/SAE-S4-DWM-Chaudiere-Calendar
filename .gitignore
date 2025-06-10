@@ -37,5 +37,7 @@ coverage/
 *.swp
 *.swo
 
+calendar.appli/src/webui/views/cache/*
+
 vendor/
 composer.lock

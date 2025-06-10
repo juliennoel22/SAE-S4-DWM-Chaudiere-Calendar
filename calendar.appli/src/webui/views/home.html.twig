@@ -4,7 +4,38 @@
 
 {% block content %}
     <h2>Bienvenue sur La Chaudière Agenda</h2>
-    <p>Consultez les événements culturels à venir, gérez-les facilement via l’administration.</p>
+    <p>Consultez les événements culturels à venir, gérez-les facilement via l'administration.</p>
 
-   
+    <div class="categories-section mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Catégories d'événements</h3>
+            <a href="{{ createCategoryUrl }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Créer une catégorie
+            </a>
+        </div>
+        
+        {% if categories is defined and categories|length > 0 %}
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ category.label }}</h5>
+                                {% if category.description %}
+                                    <p class="card-text">{{ category.description }}</p>
+                                {% else %}
+                                    <p class="card-text text-muted">Aucune description</p>
+                                {% endif %}
+                                <a class="btn btn-outline-primary">Voir les événements</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <p>Aucune catégorie n'est disponible actuellement.</p>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
