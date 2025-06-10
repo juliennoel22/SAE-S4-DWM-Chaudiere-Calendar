@@ -1,7 +1,7 @@
 <?php
 
 
-namespace canendar\core\application_core\application\domain\entities;
+namespace calendar\core\application_core\application\entities;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -17,7 +17,7 @@ class HomeAction
     
             $twig = Twig::fromRequest($request);
             
-            return $twig->render($response, 'home.html.twig');
+            return $twig->render($response, 'home.twig');
         
     }
 }

@@ -16,4 +16,4 @@ WORKDIR /var/www/html/calendar.appli/public
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/calendar.appli/public|' /etc/apache2/sites-available/000-default.conf
 
 # Ajoute un .htaccess si nécessaire
-COPY ./calendar.appli/public/.htaccess /var/www/html/gift.appli/public/.htaccess
+COPY ./calendar.appli/public/.htaccess /var/www/html/calendar.appli/public/.htaccess
