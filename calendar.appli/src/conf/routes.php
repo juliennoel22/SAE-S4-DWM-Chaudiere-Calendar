@@ -7,7 +7,7 @@ use calendar\core\webui\actions\HomeAction;
 return function ($app): object {
     
 
-    $app->get('/home', HomeAction::class)->setName('home');
+    $app->get('/{route:|home}', HomeAction::class)->setName('home');
 
     return $app;
 };
