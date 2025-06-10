@@ -7,7 +7,7 @@
  * @author: canals
  */
 
-namespace gift\core\utils;
+namespace calendar\core\utils;
 
 use Illuminate\Database\Capsule\Manager as DB ;
 

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Slim\Factory\AppFactory;
-use gift\core\utils\Eloquent;
+use calendar\core\utils\Eloquent;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
