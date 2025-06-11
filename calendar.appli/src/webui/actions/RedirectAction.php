@@ -9,6 +9,11 @@ class RedirectAction
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        if (isset($_SESSION['user'])){
+             return $response
+            ->withHeader('Location', '/categories')
+            ->withStatus(302);
+        }
         return $response
             ->withHeader('Location', '/signin')
             ->withStatus(302);
