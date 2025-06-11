@@ -1,6 +1,6 @@
 <?php
 
-namespace calendar\core\application_core\application\services;
+namespace calendar\core\application_core\application\useCases;
 
 use calendar\core\application_core\application\entities\Category;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

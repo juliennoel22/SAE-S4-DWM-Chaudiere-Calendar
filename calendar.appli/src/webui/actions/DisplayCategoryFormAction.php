@@ -11,7 +11,7 @@ class DisplayCategoryFormAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $twig = Twig::fromRequest($request);
-        return $twig->render($response, 'category_form.html.twig', [
+        return $twig->render($response, 'category_form.twig', [
             'title' => 'Créer une catégorie',
         ]);
     }

@@ -2,10 +2,8 @@
 
 namespace calendar\core\webui\actions;
 
-use calendar\core\application_core\application\services\CategoryService as ServicesCategoryService;
-use calendar\core\application_core\application\services\CategoryServiceInterface as ServicesCategoryServiceInterface;
-use calendar\core\application_core\application\usecases\CategoryServiceInterface;
-use calendar\core\application_core\application\usecases\CategoryService;
+use calendar\core\application_core\application\useCases\CategoryService as ServicesCategoryService;
+use calendar\core\application_core\application\useCases\CategoryServiceInterface as ServicesCategoryServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
