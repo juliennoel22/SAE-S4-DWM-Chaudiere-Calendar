@@ -21,9 +21,9 @@ class UserCreateAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $twig = Twig::fromRequest($request);
-
+        // echo $_SESSION["id_a"]
         // Vérifier que l'utilisateur courant est super-admin (à adapter selon ton auth)
-        if (!($_SESSION['is_superadmin'] ?? false)) {
+        if (!($_SESSION['is_adm'] ?? false)) {
             return $response->withStatus(403);
         }
 
