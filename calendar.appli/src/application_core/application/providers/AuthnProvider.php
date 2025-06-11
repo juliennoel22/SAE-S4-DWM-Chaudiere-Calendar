@@ -26,6 +26,8 @@ class AuthnProvider implements AuthnProviderInterface
         }
         session_regenerate_id(true); // Sécurité
         $_SESSION['user'] = $user->email;
+        $_SESSION['is_adm'] = $user->is_superadmin;
+
         } catch (QueryException $e) {
             throw new ProviderInternalErrorException($e->getMessage(), 0, $e);
         }
