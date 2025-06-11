@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace calendar\core\application_core\application\providers;
 
-use calendar\core\application_core\application\usecase\AuthnServiceInterface;
-use calendar\core\application_core\application\usecase\AuthnService;
+use calendar\core\application_core\application\useCases\AuthnServiceInterface;
+use calendar\core\application_core\application\useCases\AuthnService;
 use calendar\core\application_core\application\exceptions\AuthnException;
 use calendar\core\application_core\application\exceptions\UserNotFoundException;
 
