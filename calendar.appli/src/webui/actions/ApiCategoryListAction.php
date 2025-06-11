@@ -3,13 +3,14 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\useCases\CategoryServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\CategoryService;
 
 class ApiCategoryListAction
 {
-    private CategoryService $categoryService;
+    private CategoryServiceInterface $categoryService;
 
     public function __construct()
     {

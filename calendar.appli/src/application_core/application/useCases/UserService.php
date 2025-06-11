@@ -5,7 +5,7 @@ namespace calendar\core\application_core\application\useCases;
 use calendar\core\application_core\application\entities\User;
 use Illuminate\Database\QueryException;
 
-class UserService
+class UserService implements UserServiceInterface 
 {
 
     public function createUser(string $email, string $password): void

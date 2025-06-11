@@ -3,13 +3,14 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\useCases\EventServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\EventService;
 
 class ApiEventListAction
 {
-    private EventService $eventService;
+    private EventServiceInterface $eventService;
 
     public function __construct()
     {
