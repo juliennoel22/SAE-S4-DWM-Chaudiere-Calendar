@@ -2,6 +2,7 @@
 namespace calendar\core\application_core\application\useCases;
 
 
+use calendar\core\application_core\application\exceptions\EventServiceException;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use calendar\core\application_core\application\useCases\EventServiceInterface;
@@ -20,7 +21,7 @@ class EventService implements EventServiceInterface
                 ->get()
                 ->toArray();
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la récupération des événements");
+            throw new EventServiceException("Erreur lors de la récupération des événements");
         }
     }
 
@@ -45,7 +46,7 @@ class EventService implements EventServiceInterface
 
             return $event->toArray();
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la création de l'événement");
+            throw new EventServiceException("Erreur lors de la création de l'événement");
         }
     }
 
@@ -58,9 +59,9 @@ class EventService implements EventServiceInterface
             $event = Event::with(relations: 'category')->findOrFail($id);
             return $event->toArray();
         } catch (ModelNotFoundException $e) {
-            throw new \Exception("Événement $id non trouvé");
+            throw new EventServiceException("Événement $id non trouvé");
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la récupération de l'événement");
+            throw new EventServiceException("Erreur lors de la récupération de l'événement");
         }
     }
     public function getEventsByCategory(int $categoryId): array
@@ -72,47 +73,51 @@ class EventService implements EventServiceInterface
             ->get()
             ->toArray();
     } catch (QueryException $e) {
-        throw new \Exception("Erreur lors de la récupération des événements par catégorie");
+        throw new EventServiceException("Erreur lors de la récupération des événements par catégorie");
     }
 }
 public function getEventsForApi(array $periode = [], ?int $categoryId = null): array
 {
-    $query = Event::with('category')->orderBy('date_start');
+    try {
+        $query = Event::with('category')->orderBy('date_start');
 
-    if ($categoryId) {
-        $query->where('category_id', $categoryId);
+        if ($categoryId) {
+            $query->where('category_id', $categoryId);
+        }
+
+        $today = date('Y-m-d');
+        $monthStart = date('Y-m-01');
+        $monthEnd = date('Y-m-t');
+
+        if ($periode) {
+            $query->where(function($q) use ($periode, $today, $monthStart, $monthEnd) {
+                if (in_array('passee', $periode)) {
+                    $q->orWhere('date_start', '<', $monthStart);
+                }
+                if (in_array('courante', $periode)) {
+                    $q->orWhereBetween('date_start', [$monthStart, $monthEnd]);
+                }
+                if (in_array('futur', $periode)) {
+                    $q->orWhere('date_start', '>', $monthEnd);
+                }
+            });
+        }
+
+        $events = $query->get();
+
+        // Formatage pour l'API
+        return $events->map(function($event) {
+            return [
+                'id' => $event->id,
+                'titre' => $event->title,
+                'date' => $event->date_start,
+                'categorie' => $event->category ? $event->category->label : null,
+                'url' => '/api/evenements/' . $event->id
+            ];
+        })->toArray();
+    } catch (QueryException $e) {
+        throw new EventServiceException("Erreur lors de la récupération des événements pour l'API");
     }
-
-    $today = date('Y-m-d');
-    $monthStart = date('Y-m-01');
-    $monthEnd = date('Y-m-t');
-
-    if ($periode) {
-        $query->where(function($q) use ($periode, $today, $monthStart, $monthEnd) {
-            if (in_array('passee', $periode)) {
-                $q->orWhere('date_start', '<', $monthStart);
-            }
-            if (in_array('courante', $periode)) {
-                $q->orWhereBetween('date_start', [$monthStart, $monthEnd]);
-            }
-            if (in_array('futur', $periode)) {
-                $q->orWhere('date_start', '>', $monthEnd);
-            }
-        });
-    }
-
-    $events = $query->get();
-
-    // Formatage pour l'API
-    return $events->map(function($event) {
-        return [
-            'id' => $event->id,
-            'titre' => $event->title,
-            'date' => $event->date_start,
-            'categorie' => $event->category ? $event->category->label : null,
-            'url' => '/api/evenements/' . $event->id
-        ];
-    })->toArray();
 }
 
 public function getEventDetailForApi(int $eventId): ?array
@@ -144,8 +149,14 @@ public function getEventDetailForApi(int $eventId): ?array
 
 public function togglePublish(int $eventId): void
 {
-    $event = Event::findOrFail($eventId);
-    $event->published = !$event->published;
-    $event->save();
+try {
+        $event = Event::findOrFail($eventId);
+        $event->published = !$event->published;
+        $event->save();
+    } catch (ModelNotFoundException $e) {
+        throw new EventServiceException("Événement $eventId non trouvé");
+    } catch (QueryException $e) {
+        throw new EventServiceException("Erreur lors du changement de statut de publication");
+    }
 }
 }
