@@ -3,6 +3,9 @@
 {% block title %}Sign In - MyGiftBox{% endblock %}
 
 {% block content %}
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
 
     <form action={{url_for('signin_post')}} method="POST">
 

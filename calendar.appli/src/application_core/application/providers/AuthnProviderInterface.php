@@ -8,7 +8,7 @@ use calendar\core\application_core\application\usecase\AuthnServiceInterface;
 
 interface AuthnProviderInterface
 {
-    public function getSignedInUser(): ?array;
+   
 
-    public function signin(string $userId, string $password): array;
+    public function signin(string $userId, string $password): void;
 }

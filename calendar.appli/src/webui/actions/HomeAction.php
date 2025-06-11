@@ -2,7 +2,8 @@
 
 namespace calendar\core\webui\actions;
 
-use calendar\core\application_core\application\entities\Category;
+use calendar\core\application_core\application\useCases\CategoryService;
+use calendar\core\application_core\application\useCases\CategoryServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -10,15 +11,15 @@ use Slim\Views\Twig;
 class HomeAction
 {
 
-
+    private CategoryServiceInterface $categorieService;
     public function __construct() {
-        
+        $this->categorieService = new CategoryService();
     }
     public function __invoke(Request $request, Response $response, array $args): Response
     {
 
-
-        $categories = Category::all();
+    
+        $categories = $this->categorieService->getAllCategories();
 
         // Route parser pour générer l'URL de création de catégorie
         /* 
@@ -28,6 +29,9 @@ class HomeAction
         ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
         
         */
+        //echo password_hash('PASSWORD', PASSWORD_DEFAULT);
+        $user = $_SESSION['user'] ?? null;
+        ///echo isset($_SESSION['user']) ? $_SESSION['user']: "pas d'id";/////
         $routeParser = $request->getAttribute('routeParser');
         $createCategoryUrl = $routeParser ? $routeParser->urlFor('categoryCreation') : '/create/category';
 
@@ -35,7 +39,11 @@ class HomeAction
 
         return $twig->render($response, 'home.twig', [
             'categories' => $categories,
-            'createCategoryUrl' => $createCategoryUrl
+            'createCategoryUrl' => $createCategoryUrl,
+            'user' => $user
+
         ]);
+    
+    
     }
 }

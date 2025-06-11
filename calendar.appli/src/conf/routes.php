@@ -11,11 +11,12 @@ use calendar\core\webui\actions\SignInAction;
 use calendar\core\webui\actions\DisplayCategoryFormAction;
 use calendar\core\webui\actions\CreateCategoryAction;
 use calendar\core\webui\actions\DisplayCategoriesAction;
-
+use calendar\core\webui\actions\LogoutAction;
 
 return function ($app): object {
 
     $app->get('/{route:|home}', HomeAction::class)->setName('home');
+    $app->get('/logout', LogoutAction::class)->setName('logout');
 
     $app->get('/events', EventListAction::class)->setName('events');
     $app->map(['GET', 'POST'], '/events/create', EventCreateAction::class)->setName('eventCreate');

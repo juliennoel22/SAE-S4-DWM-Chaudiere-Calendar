@@ -44,7 +44,9 @@ CREATE TABLE event_images (
 INSERT INTO users (email, password_hash, is_superadmin)
 VALUES 
 ('admin1@email.fr', '$2y$10$e0VPA7TGBuG5CAjUd4vYAeA3v4wrFJbKoDkKwDcmA2OePaS77nO8e', TRUE),
-('admin2@email.fr', '$2y$10$6NzH9CahHg1wKnMbZzGOiuw0qpiR/PA4SEmU6H.LFgPH9W.XixYaW', FALSE);
+('admin2@email.fr', '$2y$10$6NzH9CahHg1wKnMbZzGOiuw0qpiR/PA4SEmU6H.LFgPH9W.XixYaW', FALSE),
+('adm@email.fr', '$2y$10$qcJkl9nYlA6ZeeQwkzN8HuS4GqnR/Jsif0GFlJhbJRw69LJZdzF0G', TRUE),
+('user@email.fr', '$2y$10$ROvjeEVr1qcSApO.mtSYWOJEvbX8FkMB9uLA9raVr6ngdZEjtXvJu', FALSE);
 
 -- Catégories
 INSERT INTO categories (label, description)
