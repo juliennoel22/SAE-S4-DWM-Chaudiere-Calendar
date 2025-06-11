@@ -24,6 +24,9 @@ class SignInAction {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
+            if (isset($_SESSION['user'])) {
+            throw new HttpNotFoundException($request, "Vous ne devez pas être connecté pour accéder à cette page");
+        }
             $data = $request->getParsedBody();
             $this->authnProvider->signin($data['email'], $data['password']);
 

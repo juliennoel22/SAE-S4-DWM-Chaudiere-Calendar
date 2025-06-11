@@ -22,6 +22,9 @@ class EventTogglePublishAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        if (!isset($_SESSION['user'])) {
+            throw new HttpNotFoundException($request, "Vous devez être connecté pour accéder à cette page");
+        }
         try{
             $eventId = (int)($args['id'] ?? 0);
             $this->eventService->togglePublish($eventId);

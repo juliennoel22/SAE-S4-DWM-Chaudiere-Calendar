@@ -22,6 +22,10 @@ class ApiCategoryListAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        $user = $_SESSION['user'] ?? null;
+        if (!$user) {
+            throw new HttpUnauthorizedException($request, "Vous devez être connecté pour accéder à cette page.");
+        }
         try{
             $categories = $this->categoryService->getAllCategories();
             $payload = json_encode($categories);

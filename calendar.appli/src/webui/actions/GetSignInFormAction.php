@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Exception\HttpForbiddenException;
 
 use calendar\core\application_core\application\providers\CsrfTokenProvider;
 
@@ -17,7 +18,7 @@ class GetSignInFormAction
     {
         // Vérification de la présence d'un utilisateur déjà connecté
         if (isset($_SESSION['user'])) {
-            throw new HttpNotFoundException($request, "Vous êtes déjà connecté. Veuillez vous déconnecter pour vous connecter avec un autre compte.");
+            throw new HttpForbiddenException($request, "Vous êtes déjà connecté. Veuillez vous déconnecter pour vous connecter avec un autre compte.");
         }
         try {
             $csrfToken = CsrfTokenProvider::generate();
