@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\EventService;
 use Slim\Exception\HttpInternalServerErrorException;
-use Slim\Exception\HttpForbiddenException;
 
 class ApiEventListByCategoryAction
 {
@@ -22,9 +21,7 @@ class ApiEventListByCategoryAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if (!isset($_SESSION['user'])) {
-            throw new HttpForbiddenException($request, "Vous devez être connecté pour accéder à cette page");
-        }
+
         try {
             $categoryId = (int) ($args['id'] ?? 0);
             $params = $request->getQueryParams();
