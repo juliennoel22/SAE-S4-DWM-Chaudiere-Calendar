@@ -17,41 +17,38 @@ class EventCreateAction
 {
     private EventServiceInterface $eventService;
     private CategoryServiceInterface $categoryService;
-
+    
     public function __construct()
     {
         $this->eventService = new EventService();
         $this->categoryService = new CategoryService();
     }
-
+    
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $twig = Twig::fromRequest($request);
         try{
-
-      
-        if ($request->getMethod() === 'POST') {
-            $data = $request->getParsedBody();
-
-            // Convertir le markdown en HTML
-            $converter = new CommonMarkConverter();
-            $data['description_html'] = $converter->convert($data['description_md']);
-            $data['created_by'] = $_SESSION['user_id'] ?? 1; // à adapter selon ton auth
-
-            $this->eventService->createEvent($data);
-
-            return $response
+            
+            if ($request->getMethod() === 'POST') {
+                $data = $request->getParsedBody();
+                
+                // Convertir le markdown en HTML
+                $converter = new CommonMarkConverter();
+                $data['description_html'] = $converter->convert($data['description_md']);
+                $data['created_by'] = $_SESSION['user_id'] ?? 1; // à adapter selon ton auth
+                
+                $this->eventService->createEvent($data);
+                
+                return $response
                 ->withHeader('Location', '/events')
                 ->withStatus(302);
-        }
-        // GET : afficher le formulaire
-        $categories = $this->categoryService->getAllCategories();
-    }catch(EventServiceException $e){
-        throw new HttpInternalServerErrorException($request, $e->getMessage());
-    }
-
-        return $twig->render($response, 'create.twig', [
-            'categories' => $categories
-        ]);
+            }
+            $categories = $this->categoryService->getAllCategories();
+            return $twig->render($response, 'create.twig', [
+                'categories' => $categories
+            ]);
+        }catch(EventServiceException $e){
+            throw new HttpInternalServerErrorException($request, $e->getMessage());
+        }  
     }
 }

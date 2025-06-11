@@ -37,14 +37,14 @@ class EventListAction
             } else {
                 $events = $this->eventService->getEvents();
             }
-        }catch(EventServiceException $e){
-             throw new HttpInternalServerErrorException($request, $e->getMessage());
-        }
-
-        return $twig->render($response, 'list.twig', [
+            
+            return $twig->render($response, 'list.twig', [
             'events' => $events,
             'categories' => $categories,
             'selectedCategory' => $categoryId
-        ]);
+            ]);
+        }catch(EventServiceException $e){
+             throw new HttpInternalServerErrorException($request, $e->getMessage());
+        }
     }
 }
