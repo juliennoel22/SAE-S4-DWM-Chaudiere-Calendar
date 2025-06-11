@@ -25,15 +25,16 @@ class ApiEventListByCategoryAction
             $categoryId = (int) ($args['id'] ?? 0);
             $params = $request->getQueryParams();
             $periode = isset($params['periode']) ? explode(',', $params['periode']) : [];
+            $sort = $params['sort'] ?? null;
 
-            $events = $this->eventService->getEventsForApi($periode, $categoryId);
+            $events = $this->eventService->getEventsForApi($periode, $categoryId, $sort);
 
             $payload = json_encode($events);
             $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
 
         } catch (EventServiceException $e) {
             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
-        return $response->withHeader('Content-Type', 'application/json');
     }
 }

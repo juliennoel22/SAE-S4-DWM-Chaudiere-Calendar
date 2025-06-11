@@ -22,17 +22,18 @@ class ApiEventListAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         try{
-            $params = $request->getQueryParams();
-            $periode = isset($params['periode']) ? explode(',', $params['periode']) : [];
-    
-            $events = $this->eventService->getEventsForApi($periode);
-    
-            $payload = json_encode($events);
-            $response->getBody()->write($payload);
+$params = $request->getQueryParams();
+    $periode = isset($params['periode']) ? explode(',', $params['periode']) : [];
+    $sort = $params['sort'] ?? null;
+
+    $events = $this->eventService->getEventsForApi($periode, null, $sort);
+
+    $payload = json_encode($events);
+    $response->getBody()->write($payload);
+    return $response->withHeader('Content-Type', 'application/json');
 
         }catch (EventServiceException $e) {
             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
-        return $response->withHeader('Content-Type', 'application/json');
     }
 }

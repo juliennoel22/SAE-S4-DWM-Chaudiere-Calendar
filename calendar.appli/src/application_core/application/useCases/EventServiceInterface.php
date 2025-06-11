@@ -21,6 +21,6 @@ interface EventServiceInterface
 
     public function getEventsByCategory(int $categoryId): array;
     public function getEventDetailForApi(int $eventId): ?array;
-    public function getEventsForApi(array $periode = [], ?int $categoryId = null): array;
+    public function getEventsForApi(array $periode = [], ?int $categoryId = null, ?string $sort = null): array;
     public function togglePublish(int $eventId): void;
 }
