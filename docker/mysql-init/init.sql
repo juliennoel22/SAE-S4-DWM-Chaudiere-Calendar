@@ -1,4 +1,5 @@
 USE calendar_db;
+SET NAMES utf8;
 -- Table des utilisateurs (admin)
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
