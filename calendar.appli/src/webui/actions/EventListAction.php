@@ -10,6 +10,7 @@ use calendar\core\application_core\application\useCases\CategoryService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpInternalServerErrorException;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Views\Twig;
 
 class EventListAction
@@ -40,7 +41,7 @@ class EventListAction
             } else {
                 $events = $this->eventService->getEvents();
             }
-            
+
             return $twig->render($response, 'list.twig', [
             'events' => $events,
             'categories' => $categories,

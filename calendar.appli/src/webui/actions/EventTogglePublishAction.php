@@ -3,12 +3,12 @@
 
 namespace calendar\core\webui\actions;
 
+use Slim\Exception\HttpForbiddenException;
 use calendar\core\application_core\application\exceptions\EventServiceException;
 use calendar\core\application_core\application\useCases\EventServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\EventService;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpInternalServerErrorException;
 
 class EventTogglePublishAction
@@ -23,7 +23,7 @@ class EventTogglePublishAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!isset($_SESSION['user'])) {
-            throw new HttpNotFoundException($request, "Vous devez être connecté pour accéder à cette page");
+            throw new HttpForbiddenException($request, "Vous devez être connecté pour accéder à cette page");
         }
         try{
             $eventId = (int)($args['id'] ?? 0);
