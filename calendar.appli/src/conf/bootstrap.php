@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use calendar\core\application_core\middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use calendar\core\utils\Eloquent;
 use Slim\Views\Twig;
@@ -28,6 +29,8 @@ $app->setBasePath(rtrim($scriptName, '/'));
 
 // Ajouter le middleware d'erreur
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
+$app->add(new CorsMiddleware);
 
 // Charger les routes
 $app = (require __DIR__ . '/routes.php')($app);
