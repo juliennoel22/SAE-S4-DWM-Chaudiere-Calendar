@@ -2,8 +2,10 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\exceptions\EventServiceException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Views\Twig;
 use  calendar\core\application_core\application\useCases\EventServiceInterface;
 use  calendar\core\application_core\application\useCases\EventService;
@@ -25,7 +27,9 @@ class EventCreateAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $twig = Twig::fromRequest($request);
+        try{
 
+      
         if ($request->getMethod() === 'POST') {
             $data = $request->getParsedBody();
 
@@ -40,9 +44,11 @@ class EventCreateAction
                 ->withHeader('Location', '/events')
                 ->withStatus(302);
         }
-
         // GET : afficher le formulaire
         $categories = $this->categoryService->getAllCategories();
+    }catch(EventServiceException $e){
+        throw new HttpInternalServerErrorException($request, $e->getMessage());
+    }
 
         return $twig->render($response, 'create.twig', [
             'categories' => $categories
