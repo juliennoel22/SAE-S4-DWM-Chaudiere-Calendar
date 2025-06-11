@@ -13,15 +13,13 @@
 </header>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <div class="container">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           {% if user is not none %}
-                    <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
-            {% else %}
-                    <li><a href="{{ url_for('signin_get') }}">Connexion</a></li>
-             {% endif %}
-        </ul>
-    </div>
+<div class="container">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user is not none %}
+                <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
+        {% endif %}    
+    </ul>
+</div>
 </nav>
 
 <main class="container">

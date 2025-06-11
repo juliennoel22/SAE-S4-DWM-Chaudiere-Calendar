@@ -34,9 +34,9 @@ class CreateCategoryAction
             // Message de succès
             $_SESSION['message'] = "La catégorie a été créée avec succès";
 
-            // Rediriger vers la page home
+            // Rediriger vers la page 
             return $response
-                ->withHeader('Location', '/home')
+                ->withHeader('Location', '/categories')
                 ->withStatus(302);
         } catch (CategoryException $e) {
             throw new HttpInternalServerErrorException($request, $e->getMessage());

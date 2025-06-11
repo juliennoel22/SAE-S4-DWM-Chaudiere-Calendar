@@ -6,25 +6,27 @@ use calendar\core\webui\actions\ApiCategoryListAction;
 use calendar\core\webui\actions\ApiEventDetailAction;
 use calendar\core\webui\actions\ApiEventListAction;
 use calendar\core\webui\actions\ApiEventListByCategoryAction;
+use calendar\core\webui\actions\CategoriesAction;
 use calendar\core\webui\actions\EventCreateAction;
 use calendar\core\webui\actions\EventListAction;
 
 use calendar\core\webui\actions\EventListByCategoryAction;
 use calendar\core\webui\actions\EventTogglePublishAction;
-use calendar\core\webui\actions\HomeAction;
+
 use calendar\core\webui\actions\GetSignInFormAction;
 use calendar\core\webui\actions\SignInAction;
 use calendar\core\webui\actions\DisplayCategoryFormAction;
 use calendar\core\webui\actions\CreateCategoryAction;
-use calendar\core\webui\actions\DisplayCategoriesAction;
+use calendar\core\webui\actions\RedirectAction;
 use calendar\core\webui\actions\LogoutAction;
 use calendar\core\webui\actions\UserCreateAction;
 
 
 return function ($app): object {
-
-    $app->get('/{route:|home}', HomeAction::class)->setName('home');
+    $app->get('/', RedirectAction::class)->setName('redirect');
     $app->get('/logout', LogoutAction::class)->setName('logout');
+
+    $app->get('/categories', CategoriesAction::class)->setName('categories');
 
     $app->get('/events', EventListAction::class)->setName('events');
     $app->map(['GET', 'POST'], '/events/create', EventCreateAction::class)->setName('eventCreate');

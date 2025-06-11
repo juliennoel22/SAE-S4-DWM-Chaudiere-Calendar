@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
-class HomeAction
+class CategoriesAction
 {
 
     private CategoryServiceInterface $categorieService;
@@ -37,7 +37,7 @@ class HomeAction
 
         $twig = Twig::fromRequest($request);
 
-        return $twig->render($response, 'home.twig', [
+        return $twig->render($response, 'categories.twig', [
             'categories' => $categories,
             'createCategoryUrl' => $createCategoryUrl,
             'user' => $user
