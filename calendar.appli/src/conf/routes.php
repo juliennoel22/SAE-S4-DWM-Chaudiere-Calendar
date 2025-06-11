@@ -5,6 +5,7 @@ declare(strict_types=1);
 use calendar\core\webui\actions\EventCreateAction;
 use calendar\core\webui\actions\EventListAction;
 
+use calendar\core\webui\actions\EventListByCategoryAction;
 use calendar\core\webui\actions\HomeAction;
 use calendar\core\webui\actions\GetSignInFormAction;
 use calendar\core\webui\actions\SignInAction;

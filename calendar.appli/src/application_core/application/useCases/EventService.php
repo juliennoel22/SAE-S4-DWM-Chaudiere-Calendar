@@ -63,4 +63,16 @@ class EventService implements EventServiceInterface
             throw new \Exception("Erreur lors de la récupération de l'événement");
         }
     }
+    public function getEventsByCategory(int $categoryId): array
+{
+    try {
+        return Event::with('category')
+            ->where('category_id', $categoryId)
+            ->orderBy('date_start')
+            ->get()
+            ->toArray();
+    } catch (QueryException $e) {
+        throw new \Exception("Erreur lors de la récupération des événements par catégorie");
+    }
+}
 }

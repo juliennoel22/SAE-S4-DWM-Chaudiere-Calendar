@@ -14,9 +14,9 @@ use League\CommonMark\CommonMarkConverter;
 class EventCreateAction
 {
     private EventServiceInterface $eventService;
-    private CategoryService $categoryService;
+    private CategoryServiceInterface $categoryService;
 
-    public function __construct(EventServiceInterface $eventService, CategoryServiceInterface $CategoryService)
+    public function __construct()
     {
         $this->eventService = new EventService();
         $this->categoryService = new CategoryService();

@@ -1,4 +1,15 @@
+{# filepath: c:\xampp\htdocs\SAE-S4-DWM-Chaudiere-Calendar\calendar.appli\src\webui\views\list.twig #}
 <h2>Liste des événements</h2>
+<form method="get" action="">
+    <label for="category_id">Filtrer par catégorie :</label>
+    <select name="category_id" id="category_id" onchange="this.form.submit()">
+        <option value="">Toutes</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if selectedCategory == cat.id %}selected{% endif %}>{{ cat.label }}</option>
+        {% endfor %}
+    </select>
+</form>
+
 <table>
     <thead>
         <tr>

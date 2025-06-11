@@ -18,4 +18,6 @@ interface EventServiceInterface
      * Retourne un événement par son ID.
      */
     public function getEventById(int $id): array;
+
+        public function getEventsByCategory(int $categoryId): array;
 }
