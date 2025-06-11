@@ -3,11 +3,11 @@
 namespace calendar\core\webui\actions;
 
 use calendar\core\application_core\application\entities\Category;
-use calendar\core\application_core\application\exceptions\CategoryException;
+use Slim\Exception\HttpForbiddenException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Views\Twig;
+
 
 class DisplayCategoriesAction
 {
@@ -16,7 +16,7 @@ class DisplayCategoriesAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!isset($_SESSION['user'])) {
-            throw new HttpNotFoundException($request, "Vous devez être connecté pour accéder à cette page");
+            throw new HttpForbiddenException($request, "Vous devez être connecté pour accéder à cette page");
         }
         $categories = Category::all();
         
