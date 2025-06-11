@@ -6,18 +6,20 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use  calendar\core\application_core\application\useCases\EventServiceInterface;
-use calendar\core\application\services\CatalogueServiceInterface;
+use  calendar\core\application_core\application\useCases\EventService;
+use calendar\core\application_core\application\services\CategoryServiceInterface;
+use calendar\core\application_core\application\services\CategoryService;
 use League\CommonMark\CommonMarkConverter;
 
 class EventCreateAction
 {
     private EventServiceInterface $eventService;
-    private CatalogueServiceInterface $catalogueService;
+    private CategoryService $categoryService;
 
-    public function __construct(EventServiceInterface $eventService, CatalogueServiceInterface $catalogueService)
+    public function __construct(EventServiceInterface $eventService, CategoryServiceInterface $CategoryService)
     {
-        $this->eventService = $eventService;
-        $this->catalogueService = $catalogueService;
+        $this->eventService = new EventService();
+        $this->categoryService = new CategoryService();
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -40,7 +42,7 @@ class EventCreateAction
         }
 
         // GET : afficher le formulaire
-        $categories = $this->catalogueService->getCategories();
+        $categories = $this->categoryService->getAllCategories();
 
         return $twig->render($response, 'create.twig', [
             'categories' => $categories

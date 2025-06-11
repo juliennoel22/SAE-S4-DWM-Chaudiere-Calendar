@@ -68,9 +68,72 @@ class __TwigTemplate_9011182ce4459ee7e633b23037c244e1 extends Template
         $macros = $this->macros;
         // line 6
         yield "    <h2>Bienvenue sur La Chaudière Agenda</h2>
-    <p>Consultez les événements culturels à venir, gérez-les facilement via l’administration.</p>
+    <p>Consultez les événements culturels à venir, gérez-les facilement via l'administration.</p>
 
-   
+    <div class=\"categories-section mt-4\">
+        <div class=\"d-flex justify-content-between align-items-center mb-3\">
+            <h3>Catégories d'événements</h3>
+            <a href=\"";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["createCategoryUrl"] ?? null), "html", null, true);
+        yield "\" class=\"btn btn-primary\">
+                <i class=\"fas fa-plus\"></i> Créer une catégorie
+            </a>
+        </div>
+        
+        ";
+        // line 17
+        if ((array_key_exists("categories", $context) && (Twig\Extension\CoreExtension::length($this->env->getCharset(), ($context["categories"] ?? null)) > 0))) {
+            // line 18
+            yield "            <div class=\"row\">
+                ";
+            // line 19
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(($context["categories"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+                // line 20
+                yield "                    <div class=\"col-md-4 mb-3\">
+                        <div class=\"card\">
+                            <div class=\"card-body\">
+                                <h5 class=\"card-title\">";
+                // line 23
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "label", [], "any", false, false, false, 23), "html", null, true);
+                yield "</h5>
+                                ";
+                // line 24
+                if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["category"], "description", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                    // line 25
+                    yield "                                    <p class=\"card-text\">";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "description", [], "any", false, false, false, 25), "html", null, true);
+                    yield "</p>
+                                ";
+                } else {
+                    // line 27
+                    yield "                                    <p class=\"card-text text-muted\">Aucune description</p>
+                                ";
+                }
+                // line 29
+                yield "                                <a class=\"btn btn-outline-primary\">Voir les événements</a>
+                            </div>
+                        </div>
+                    </div>
+                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['category'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 34
+            yield "            </div>
+        ";
+        } else {
+            // line 36
+            yield "            <div class=\"alert alert-info\">
+                <p>Aucune catégorie n'est disponible actuellement.</p>
+            </div>
+        ";
+        }
+        // line 40
+        yield "    </div>
 ";
         yield from [];
     }
@@ -96,7 +159,7 @@ class __TwigTemplate_9011182ce4459ee7e633b23037c244e1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+        return array (  136 => 40,  130 => 36,  126 => 34,  116 => 29,  112 => 27,  106 => 25,  104 => 24,  100 => 23,  95 => 20,  91 => 19,  88 => 18,  86 => 17,  78 => 12,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
