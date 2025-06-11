@@ -5,6 +5,7 @@ namespace calendar\core\webui\actions;
 use calendar\core\application_core\application\exceptions\CategoryException;
 use calendar\core\application_core\application\useCases\CategoryService as ServicesCategoryService;
 use calendar\core\application_core\application\useCases\CategoryServiceInterface as ServicesCategoryServiceInterface;
+use calendar\core\application_core\application\providers\CsrfTokenProvider;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpInternalServerErrorException;
@@ -26,6 +27,7 @@ class CreateCategoryAction
 
         // Récupérer les données du formulaire
         $data = $request->getParsedBody();
+        CsrfTokenProvider::check($data['csrf'] ?? '');
         $label = $data['label'] ?? null; // normalement le label est obligatoire, mais je mets une sécu
         $description = $data['description'] ?? null;
 

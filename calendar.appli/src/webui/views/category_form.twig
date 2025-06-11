@@ -25,6 +25,8 @@
             <textarea class="form-control" id="description" name="description" rows="5">{{ formData.description ?? '' }}</textarea>
             <div class="form-text">Utilisez la syntaxe Markdown pour mettre en forme votre description.</div>
         </div>
+
+        <input type="hidden" name="csrf" value="{{ csrf_token }}">
         
         <div class="d-flex justify-content-between">
         <a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-secondary">Annuler</a>

@@ -8,6 +8,7 @@ use calendar\core\application_core\application\exceptions\UserNotFoundException;
 use calendar\core\application_core\application\exceptions\AuthnException;
 use calendar\core\application_core\application\providers\AuthnProviderInterface;
 use calendar\core\application_core\application\providers\AuthnProvider;
+use calendar\core\application_core\application\providers\CsrfTokenProvider;
 use calendar\core\application_core\application\exceptions\ProviderInternalErrorException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;      
@@ -28,6 +29,7 @@ class SignInAction {
             throw new HttpNotFoundException($request, "Vous ne devez pas être connecté pour accéder à cette page");
         }
             $data = $request->getParsedBody();
+            CsrfTokenProvider::check($data['csrf'] ?? '');
             $this->authnProvider->signin($data['email'], $data['password']);
 
             $view = Twig::fromRequest($request);
