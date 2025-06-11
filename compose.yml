@@ -11,6 +11,15 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=root
 
+  js:
+    image: node:20
+    working_dir: /usr/src/app
+    volumes:
+      - ./calendar.appli.web:/usr/src/app
+    command: >
+      sh -c "npm install -g serve && serve -s . -l 3000"
+    ports:
+      - "3000:3000"
   
   db:
     image: mysql:8.0
@@ -19,7 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: calendar_db
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./docker/mysql-init:/docker-entrypoint-initdb.d
