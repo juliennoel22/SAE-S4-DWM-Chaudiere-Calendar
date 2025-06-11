@@ -7,8 +7,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use  calendar\core\application_core\application\useCases\EventServiceInterface;
 use  calendar\core\application_core\application\useCases\EventService;
-use calendar\core\application_core\application\services\CategoryServiceInterface;
-use calendar\core\application_core\application\services\CategoryService;
+use calendar\core\application_core\application\useCases\CategoryServiceInterface;
+use calendar\core\application_core\application\useCases\CategoryService;
 use League\CommonMark\CommonMarkConverter;
 
 class EventCreateAction

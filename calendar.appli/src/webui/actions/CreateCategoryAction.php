@@ -42,7 +42,6 @@ class CreateCategoryAction
             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
 
-        // Si une autre méthode est utilisée, retourner une erreur
-        throw new HttpBadRequestException($request, "Méthode non autorisée");
+        
     }
 }

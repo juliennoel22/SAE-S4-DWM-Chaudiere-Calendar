@@ -2,8 +2,10 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\useCases\EventService;
 use calendar\core\application_core\application\useCases\EventServiceInterface;
-use calendar\core\application_core\application\services\CategoryServiceInterface;
+use calendar\core\application_core\application\useCases\CategoryServiceInterface;
+use calendar\core\application_core\application\useCases\CategoryService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -15,8 +17,8 @@ class EventListAction
 
     public function __construct()
     {
-        $this->eventService = new \calendar\core\application_core\application\useCases\EventService();
-        $this->categoryService = new \calendar\core\application_core\application\services\CategoryService();
+        $this->eventService = new EventService();
+        $this->categoryService = new CategoryService();
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response

@@ -113,7 +113,9 @@ class __TwigTemplate_9011182ce4459ee7e633b23037c244e1 extends Template
                                 ";
                 }
                 // line 29
-                yield "                                <a class=\"btn btn-outline-primary\">Voir les événements</a>
+                yield "                                <a href=\"/events?category_id=";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 29), "html", null, true);
+                yield "\" class=\"btn btn-outline-primary\">Voir les événements</a>
                             </div>
                         </div>
                     </div>
@@ -159,7 +161,7 @@ class __TwigTemplate_9011182ce4459ee7e633b23037c244e1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  136 => 40,  130 => 36,  126 => 34,  116 => 29,  112 => 27,  106 => 25,  104 => 24,  100 => 23,  95 => 20,  91 => 19,  88 => 18,  86 => 17,  78 => 12,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+        return array (  138 => 40,  132 => 36,  128 => 34,  116 => 29,  112 => 27,  106 => 25,  104 => 24,  100 => 23,  95 => 20,  91 => 19,  88 => 18,  86 => 17,  78 => 12,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
