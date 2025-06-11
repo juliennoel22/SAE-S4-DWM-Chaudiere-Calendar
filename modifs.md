@@ -4,5 +4,6 @@
 - ❌Lors de la création d'un événement, mettre un symbole "€" dans le formulaire de prix
 - ❌ redirection sur la page d'erreur en cas d'erreur avec le message associé
 - ❌ mettre les tokens pour les forms
+- ❌ events : changer le map()
 ---
 ✅
