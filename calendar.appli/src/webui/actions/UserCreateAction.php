@@ -30,7 +30,7 @@ class UserCreateAction
         if ($request->getMethod() === 'POST') {
             $data = $request->getParsedBody();
             $this->userService->createUser($data['email'], $data['password']);
-            return $response->withHeader('Location', '/home')->withStatus(302);
+            return $response->withHeader('Location', '/categories')->withStatus(302);
         }
 
         return $twig->render($response, 'user_create.twig');
