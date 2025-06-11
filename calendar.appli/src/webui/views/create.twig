@@ -1,32 +1,51 @@
-<h2>Créer un événement</h2>
-<form method="post" action="">
-    <label for="title">Titre :</label>
-    <input type="text" id="title" name="title" required><br>
+{% extends 'base.twig' %}
 
-    <label for="description_md">Description (Markdown) :</label>
-    <textarea id="description_md" name="description_md" required></textarea><br>
+{% block title %}
+<h2 class="mb-4">Créer un événement</h2>
+{% endblock %}
 
-    <label for="price">Prix :</label>
-    <input type="text" id="price" name="price"><br>
-
-    <label for="date_start">Date début :</label>
-    <input type="date" id="date_start" name="date_start" required><br>
-
-    <label for="date_end">Date fin :</label>
-    <input type="date" id="date_end" name="date_end"><br>
-
-    <label for="time">Heure :</label>
-    <input type="time" id="time" name="time"><br>
-
-    <label for="category_id">Catégorie :</label>
-    <select id="category_id" name="category_id" required>
-        {% for cat in categories %}
-            <option value="{{ cat.id }}">{{ cat.label }}</option>
-        {% endfor %}
-    </select><br>
-
-    <label for="published">Publié :</label>
-    <input type="checkbox" id="published" name="published" value="1"><br>
-
-    <button type="submit">Créer l'événement</button>
+{% block content %}
+<form method="post" action="" class="card p-4 shadow-sm">
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre :</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="description_md" class="form-label">Description (Markdown) :</label>
+        <textarea id="description_md" name="description_md" class="form-control" rows="4" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Prix :</label>
+        <input type="text" id="price" name="price" class="form-control">
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <label for="date_start" class="form-label">Date début :</label>
+            <input type="date" id="date_start" name="date_start" class="form-control" required>
+        </div>
+        <div class="col">
+            <label for="date_end" class="form-label">Date fin :</label>
+            <input type="date" id="date_end" name="date_end" class="form-control">
+        </div>
+        <div class="col">
+            <label for="time" class="form-label">Heure :</label>
+            <input type="time" id="time" name="time" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="category_id" class="form-label">Catégorie :</label>
+        <select id="category_id" name="category_id" class="form-select" required>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}">{{ cat.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-check mb-3">
+        <input type="checkbox" id="published" name="published" value="1" class="form-check-input">
+        <label for="published" class="form-check-label">Publié</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer l'événement</button>
+    <a href="/events" class="btn btn-outline-secondary mt-2">Annuler</a>
+    
 </form>
+{% endblock %}

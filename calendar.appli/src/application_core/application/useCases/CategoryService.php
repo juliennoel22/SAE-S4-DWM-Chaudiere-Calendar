@@ -3,6 +3,7 @@
 namespace calendar\core\application_core\application\useCases;
 
 use calendar\core\application_core\application\entities\Category;
+use calendar\core\application_core\application\exceptions\CategoryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 
@@ -20,7 +21,7 @@ class CategoryService implements CategoryServiceInterface
 
             return $category->id;
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la création de la catégorie: " . $e->getMessage());
+            throw new CategoryException("Erreur lors de la création de la catégorie: " . $e->getMessage());
         }
     }
 
@@ -29,7 +30,7 @@ class CategoryService implements CategoryServiceInterface
         try {
             return Category::all()->toArray();
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la récupération des catégories: " . $e->getMessage());
+            throw new CategoryException("Erreur lors de la récupération des catégories: " . $e->getMessage());
         }
     }
 
@@ -39,9 +40,9 @@ class CategoryService implements CategoryServiceInterface
             $category = Category::findOrFail($categoryId);
             return $category->toArray();
         } catch (ModelNotFoundException $e) {
-            throw new \Exception("Catégorie avec l'ID $categoryId non trouvée");
+            throw new CategoryException("Catégorie avec l'ID $categoryId non trouvée");
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la récupération de la catégorie: " . $e->getMessage());
+            throw new CategoryException("Erreur lors de la récupération de la catégorie: " . $e->getMessage());
         }
     }
 }

@@ -18,4 +18,9 @@ interface EventServiceInterface
      * Retourne un événement par son ID.
      */
     public function getEventById(int $id): array;
+
+    public function getEventsByCategory(int $categoryId): array;
+    public function getEventDetailForApi(int $eventId): ?array;
+    public function getEventsForApi(array $periode = [], ?int $categoryId = null): array;
+    public function togglePublish(int $eventId): void;
 }

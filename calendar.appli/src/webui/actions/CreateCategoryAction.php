@@ -2,11 +2,11 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\exceptions\CategoryException;
 use calendar\core\application_core\application\useCases\CategoryService as ServicesCategoryService;
 use calendar\core\application_core\application\useCases\CategoryServiceInterface as ServicesCategoryServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpInternalServerErrorException;
 
 class CreateCategoryAction
@@ -20,7 +20,7 @@ class CreateCategoryAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $method = $request->getMethod();
+
 
         // Récupérer les données du formulaire
         $data = $request->getParsedBody();
@@ -38,11 +38,10 @@ class CreateCategoryAction
             return $response
                 ->withHeader('Location', '/home')
                 ->withStatus(302);
-        } catch (\Exception $e) {
+        } catch (CategoryException $e) {
             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
 
-        // Si une autre méthode est utilisée, retourner une erreur
-        throw new HttpBadRequestException($request, "Méthode non autorisée");
+        
     }
 }
