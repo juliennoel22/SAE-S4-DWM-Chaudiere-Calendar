@@ -11,7 +11,7 @@ class LogoutAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!isset($_SESSION['user'])) {
-            throw new HttpForbiddenException($request, "Vous devez être connecté pour vous déconnecter.");
+            throw new HttpForbiddenException($request, "Vous devez être connecté pour vous déconnecter");
         }
         // Détruit la session de façon sécurisée
         session_unset();

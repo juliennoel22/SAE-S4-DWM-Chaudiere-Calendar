@@ -5,7 +5,6 @@ namespace calendar\core\application_core\application\providers;
 
 use calendar\core\application_core\application\exceptions\CsrfTokenException;
 
-
 class CsrfTokenProvider
 {
     public static function generate(): string
@@ -25,7 +24,7 @@ class CsrfTokenProvider
         }
         if (!isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $token)) {
             unset($_SESSION['csrf_token']);
-            throw new CsrfTokenException('CSRF token invalide.');
+            throw new CsrfTokenException('CSRF token invalide');
         }
         unset($_SESSION['csrf_token']);
     }

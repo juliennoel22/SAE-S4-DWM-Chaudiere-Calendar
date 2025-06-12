@@ -29,7 +29,7 @@ class AuthnProvider implements AuthnProviderInterface
         $_SESSION['is_adm'] = $user->is_superadmin;
 
         } catch (QueryException $e) {
-            throw new ProviderInternalErrorException($e->getMessage(), 0, $e);
+            throw new ProviderInternalErrorException($e->getMessage());
         }
     }
 }

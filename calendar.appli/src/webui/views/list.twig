@@ -2,13 +2,10 @@
 
 {% block title %}
 
-<h2 class="mb-4 d-flex justify-content-between align-items-center">
-    <span>Liste des événements</span>
-    <a href="{{ url_for('create_event_form', {'route': ''}) }}" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Créer un événement
-    </a>
-</h2>
+  Liste des événements
+   
 {% endblock %}
+
 {% block content %}
 <a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-outline-secondary mb-3">
     &larr; Retour aux catégories
@@ -39,6 +36,7 @@
     <table class="table table-striped ">
         <thead>
             <tr>
+                <th></th>
                 <th>Titre</th>
                 <th>Catégorie</th>
                 <th>Date(s)</th>
@@ -49,6 +47,11 @@
         <tbody>
             {% for event in events %}
                 <tr>
+                    <td>
+                        <a href="{{ url_for('event_detail', {'id': event.id}) }}" class="btn btn-primary btn-sm">
+                            Voir détails
+                        </a>
+                    </td>
                     <td>{{ event.title }}</td>
                     <td>
                         {% if event.category is defined and event.category %}
@@ -80,7 +83,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5" class="text-center text-muted">Aucun événement trouvé.</td>
+                    <td colspan="6" class="text-center text-muted">Aucun événement trouvé.</td>
                 </tr>
             {% endfor %}
         </tbody>
