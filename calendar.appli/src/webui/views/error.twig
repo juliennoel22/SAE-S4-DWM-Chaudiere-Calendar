@@ -3,10 +3,10 @@
 {% block title %}Erreur{% endblock %}
 
 {% block content %}
-<div class="alert alert-danger" role="alert">
+<div class="alert bg-primary-color text-white" role="alert">
     <h4 class="alert-heading">Erreur</h4>
     <p>{{ message }}</p>
     <hr>
-    <a href="{{ url_for('redirect') }}" class="btn btn-primary">Retour à l'accueil</a>
+    <a href="{{ url_for('redirect') }}" class="btn bg-primary-color text-white">Retour à l'accueil</a>
 </div>
 {% endblock %}
