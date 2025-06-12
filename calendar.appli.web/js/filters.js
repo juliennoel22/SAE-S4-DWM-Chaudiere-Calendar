@@ -1,5 +1,8 @@
 import { Event } from './event.js';
 
+// Cache des catégories pour éviter des appels API répétés
+let categoriesCache = null;
+
 export function applyFilters(events, categoryFilter, sortFilter, timeFilter) {
     if (!events || !Array.isArray(events)) return [];
 
@@ -64,21 +67,29 @@ function sortEvents(events, sortFilter) {
             return events.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
 
         case 'title':
-            return events.sort((a, b) => a.title.localeCompare(b.title));
+            // Correction: utiliser titre au lieu de title
+            return events.sort((a, b) => a.titre.localeCompare(b.titre));
 
         default:
             return events;
     }
 }
 
-function getCategoryNameById(categoryId) {
-    // Mapping simplifié des catégories (à remplacer par une version dynamique)
-    const categories = {
-        '1': 'concert',
-        '2': 'expo',
-        '3': 'conférence',
-        '4': 'spectacle'
-    };
+export function setCategoriesCache(categories) {
+    if (Array.isArray(categories) && categories.length > 0) {
+        categoriesCache = categories;
+    }
+}
 
-    return categories[categoryId] || categoryId;
+
+function getCategoryNameById(categoryId) {
+    // Si le cache des catégories existe
+    if (categoriesCache) {
+        const category = categoriesCache.find(cat => String(cat.id) === String(categoryId));
+        if (category) {
+            return category.label.toLowerCase();
+        }
+    }
+    
+    return String(categoryId).toLowerCase();
 }

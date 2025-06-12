@@ -1,6 +1,6 @@
 import { fetchEvents, fetchCategories, fetchEventById } from './api.js';
 import { renderEventsList, renderCategoriesList, renderEventDetail, showSection, setActiveNavLink } from './ui.js';
-import { applyFilters } from './filters.js';
+import { applyFilters, setCategoriesCache } from './filters.js';
 import { loadFavorites, renderFavorites, toggleFavorite } from './favorites.js';
 
 class App {
@@ -50,6 +50,9 @@ class App {
 
             this.events = eventsData;
             this.categories = categoriesData;
+            
+            // Mettre à jour le cache des catégories pour le filtrage dynamique
+            setCategoriesCache(categoriesData);
 
             // Remplir les filtres de catégories
             this.populateCategoryFilters();
