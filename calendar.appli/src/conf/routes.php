@@ -21,6 +21,7 @@ use calendar\core\webui\actions\RedirectAction;
 use calendar\core\webui\actions\LogoutAction;
 use calendar\core\webui\actions\UserCreateAction;
 
+use calendar\core\webui\actions\ErrorAction;
 
 return function ($app): object {
     $app->get('/', RedirectAction::class)->setName('redirect');
@@ -37,7 +38,6 @@ return function ($app): object {
 
     $app->get('/create/category', DisplayCategoryFormAction::class)->setName('create_category_form');
     $app->post('/create/category', CreateCategoryAction::class)->setName('create_category_post');
-
 
     $app->get('/api/category', ApiCategoryListAction::class);
     $app->get('/api/events', ApiEventListAction::class);

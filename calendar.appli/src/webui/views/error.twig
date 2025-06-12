@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Erreur</h4>
+    <p>{{ message }}</p>
+    <hr>
+    <a href="{{ url_for('redirect') }}" class="btn btn-primary">Retour à l'accueil</a>
+</div>
+{% endblock %}
