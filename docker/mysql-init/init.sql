@@ -68,8 +68,8 @@ VALUES
 -- Images associées aux événements
 INSERT INTO event_images (event_id, url)
 VALUES 
-(1, 'https://cdn.example.com/images/jazz-night.jpg'),
-(2, 'https://cdn.example.com/images/photo-expo.jpg'),
-(3, 'https://cdn.example.com/images/conference-ia.jpg'),
-(4, 'https://cdn.example.com/images/theatre-absurde.jpg'),
-(4, 'https://cdn.example.com/images/theatre-absurde2.jpg');
+
+(1, 'https://images.pexels.com/photos/9808642/pexels-photo-9808642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(2, 'https://images.pexels.com/photos/9419405/pexels-photo-9419405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(3, 'https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(4, 'https://images.pexels.com/photos/6476783/pexels-photo-6476783.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
