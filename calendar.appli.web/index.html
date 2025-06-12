@@ -6,16 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaChaudièreAgenda</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Ajout du CDN Handlebars -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
 
 <body>
     <header>
         <h1>LaChaudièreAgenda</h1>
         <p class="site-description">Votre agenda culturel pour suivre tous les événements de La Chaudière</p>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" id="events-link" class="active">Événements</a></li>
+                <li><a href="#" id="categories-link">Catégories</a></li>
+                <li><a href="#" id="favorites-link">Favoris</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <h1>TEST !</h1>
+        <section id="events-container" class="section">
+            <div class="container">
+                <h2>Événements</h2>
+                <!-- Intégration des filtres directement dans la section événements -->
+                <div class="filter-controls">
+                    <div class="date-filter">
+                        <select id="month-filter">
+                            <option value="current">Mois courant</option>
+                            <option value="past">Événements passés</option>
+                            <option value="future">Événements à venir</option>
+                        </select>
+                    </div>
+                    <div class="sort-filter">
+                        <select id="sort-filter">
+                            <option value="date-asc">Date (ascendant)</option>
+                            <option value="date-desc">Date (descendant)</option>
+                            <option value="title">Titre (A-Z)</option>
+                        </select>
+                    </div>
+                    <div class="category-filter">
+                        <select id="category-filter">
+                            <option value="all">Toutes les catégories</option>
+                            <!-- Catégories ajoutées dynamiquement -->
+                        </select>
+                    </div>
+                </div>
+                <div id="events-list" class="events-grid">
+                    <!-- Les événements seront chargés ici dynamiquement -->
+                    <div class="loading">Chargement des événements...</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories-container" class="section hidden">
+            <div class="container">
+                <h2>Catégories</h2>
+                <div id="categories-list" class="categories-grid">
+                    <!-- Les catégories seront chargées ici dynamiquement -->
+                    <div class="loading">Chargement des catégories...</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="favorites-container" class="section hidden">
+            <div class="container">
+                <h2>Mes Favoris</h2>
+                <!-- Ajout des mêmes filtres dans la section favoris -->
+                <div class="filter-controls">
+                    <div class="date-filter">
+                        <select id="favorites-month-filter">
+                            <option value="current">Mois courant</option>
+                            <option value="past">Événements passés</option>
+                            <option value="future">Événements à venir</option>
+                        </select>
+                    </div>
+                    <div class="sort-filter">
+                        <select id="favorites-sort-filter">
+                            <option value="date-asc">Date (ascendant)</option>
+                            <option value="date-desc">Date (descendant)</option>
+                            <option value="title">Titre (A-Z)</option>
+                        </select>
+                    </div>
+                    <div class="category-filter">
+                        <select id="favorites-category-filter">
+                            <option value="all">Toutes les catégories</option>
+                            <!-- Catégories ajoutées dynamiquement -->
+                        </select>
+                    </div>
+                </div>
+                <div id="favorites-list" class="events-grid">
+                    <!-- Les favoris seront chargés ici dynamiquement -->
+                    <div class="no-favorites">Vous n'avez pas encore d'événements favoris.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="event-detail" class="section hidden">
+            <div class="container">
+                <a href="#" id="back-button" class="back-button">← Retour à la liste</a>
+                <div id="event-content">
+                    <!-- Détail de l'événement chargé dynamiquement -->
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 LaChaudièreAgenda</p>
         <p> | </p>
@@ -27,8 +121,65 @@
         </p>
     </footer>
 
+    <!-- Templates Handlebars -->
+    <script id="event-card-template" type="text/x-handlebars-template">
+        <article class="event-card" data-id="{{id}}">
+            <div class="event-info">
+                <h3>{{titre}}</h3>
+                <time datetime="{{date}}">{{formattedDate}}</time>
+                <span class="event-category">{{category}}</span>
+                <button class="favorite-button {{#if isFavorite}}active{{/if}}" data-id="{{id}}">
+                    {{#if isFavorite}}★{{else}}☆{{/if}}
+                </button>
+            </div>
+        </article>
+    </script>
+
+    <script id="category-card-template" type="text/x-handlebars-template">
+        <article class="category-card" data-id="{{id}}">
+            <h3>{{label}}</h3>
+            <p>{{description}}</p>
+        </article>
+    </script>
+
+    <script id="event-detail-template" type="text/x-handlebars-template">
+        <article class="event-detail">
+            <header>
+                <h2>{{titre}}</h2>
+                <button class="favorite-button detail-favorite {{#if isFavorite}}active{{/if}}" data-id="{{id}}">
+                    {{#if isFavorite}}Retirer des favoris{{else}}Ajouter aux favoris{{/if}} {{#if isFavorite}}★{{else}}☆{{/if}}
+                </button>
+            </header>
+            
+            <div class="event-meta">
+                <div class="event-date-time">
+                    <p><strong>Date:</strong> {{formattedDate}}</p>
+                    <p><strong>Heure:</strong> {{#if time}}{{time}}{{else}}Non spécifiée{{/if}}</p>
+                </div>
+                <div class="event-price-category">
+                    <p><strong>Prix:</strong> {{price}}</p>
+                    <p><strong>Catégorie:</strong> {{category}}</p>
+                </div>
+            </div>
+            
+            {{#if hasImage}}
+            <div class="event-image-large">
+                <img src="{{mainImageUrl}}" alt="{{titre}}">
+            </div>
+            {{/if}}
+            
+            <div class="event-description">
+                {{{htmlDescription}}}
+            </div>
+        </article>
+    </script>
+
+    <script id="no-results-template" type="text/x-handlebars-template">
+        <div class="no-results">{{message}}</div>
+    </script>
+
     <script type="module" src="js/app.js"></script>
-    
+
 </body>
 
 </html>
