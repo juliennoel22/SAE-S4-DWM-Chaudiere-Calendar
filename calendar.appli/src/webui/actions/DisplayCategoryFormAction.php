@@ -19,7 +19,7 @@ class DisplayCategoryFormAction
         $twig = Twig::fromRequest($request);
         return $twig->render($response, 'category_form.twig', [
             'title' => 'Créer une catégorie',
-            'csrfToken' => $csrfToken
+            'csrf_token' => $csrfToken
         ]);
     }
 }

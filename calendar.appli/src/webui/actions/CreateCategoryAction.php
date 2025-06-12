@@ -28,6 +28,7 @@ class CreateCategoryAction
 
         // Récupérer les données du formulaire
         $data = $request->getParsedBody();
+        // echo $data['csrf'];
         CsrfTokenProvider::check($data['csrf'] ?? '');
         $label = $data['label'] ?? null; // normalement le label est obligatoire, mais je mets une sécu
         $description = $data['description'] ?? null;

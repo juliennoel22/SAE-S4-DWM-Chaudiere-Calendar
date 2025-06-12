@@ -2,6 +2,7 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\exceptions\CsrfTokenException;
 use calendar\core\application_core\application\exceptions\EventServiceException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -54,10 +55,12 @@ class EventCreateAction
             $categories = $this->categoryService->getAllCategories();
             return $twig->render($response, 'create.twig', [
                 'categories' => $categories,
-                'csrfToken' => $csrfToken
+                'csrf_token' => $csrfToken
             ]);
         }catch(EventServiceException $e){
             throw new HttpInternalServerErrorException($request, $e->getMessage());
-        }  
+        }catch(CsrfTokenException $e){
+            throw new HttpForbiddenException($request, $e->getMessage());
+        }
     }
 }
