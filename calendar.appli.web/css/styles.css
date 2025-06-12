@@ -1,5 +1,6 @@
 :root {
-    --primary-color: #2c3e50;
+    --primary-color: #FF6347;
+    /* Nouvelle couleur de branding (corail) */
     --secondary-color: #f1c40f;
     --text-color: #333;
     --light-text: #666;
@@ -12,12 +13,13 @@
     --transition: all 0.3s ease;
     --max-width: 1200px;
     --spacing: 1rem;
-    --link-color: #3498db;
+    --link-color: #FF6347;
+    /* Assorti à la couleur primaire */
     --hover-bg: #e0e0e0;
     --alert-bg: #ffdddd;
     --alert-border: #f44336;
-    --footer-bg: rgba(44, 62, 80, 0.8);
-    --footer-bg: #2c3e50;
+    --footer-bg: #FF6347;
+    /* Assorti à la couleur primaire */
     --footer-text: #fff;
     --h1-color: #f1f1f1;
 }
@@ -66,6 +68,33 @@ header {
     color: white;
     padding: 1.5rem 0;
     box-shadow: var(--shadow);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* Remplace les styles existants du logo avec un conteneur dédié */
+.logo-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.logo-wrapper img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
 }
 
 h1 {

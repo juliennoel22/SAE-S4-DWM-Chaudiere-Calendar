@@ -48,7 +48,7 @@
 ### DOM et templates
 - [ ] Manipulation correcte du DOM
 - [ ] Gestion des écouteurs d'événements (listeners)
-- [ ] Utilisation de templates (Handlebars)
+- [x] Utilisation de templates (Handlebars)
 - [ ] Séparation claire JS/CSS
 
 ## Déploiement
