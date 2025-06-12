@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+{% if error is defined %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% endif %}
 <form method="post" action="" class="card p-4 shadow-sm">
     <div class="mb-3">
         <label for="title" class="form-label">Titre :</label>

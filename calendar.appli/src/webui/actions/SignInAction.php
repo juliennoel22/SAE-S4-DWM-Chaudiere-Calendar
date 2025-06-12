@@ -12,6 +12,7 @@ use calendar\core\application_core\application\providers\CsrfTokenProvider;
 use calendar\core\application_core\application\exceptions\ProviderInternalErrorException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;      
+use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig;
 
 class SignInAction {

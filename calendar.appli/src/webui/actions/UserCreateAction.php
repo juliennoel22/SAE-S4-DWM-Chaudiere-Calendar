@@ -7,6 +7,7 @@ use calendar\core\application_core\application\useCases\UserServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\UserService;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig;
 class UserCreateAction
 {
