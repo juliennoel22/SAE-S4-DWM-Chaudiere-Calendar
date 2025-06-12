@@ -18,6 +18,7 @@ use calendar\core\webui\actions\DisplayEventFormAction;
 use calendar\core\webui\actions\DisplayUserFormAction;
 use calendar\core\webui\actions\RedirectAction;
 use calendar\core\webui\actions\LogoutAction;
+use calendar\core\webui\actions\EventDetailsAction;
 
 return function ($app): object {
     $app->get('/', RedirectAction::class)->setName('redirect');
@@ -28,6 +29,8 @@ return function ($app): object {
 
     $app->get('/categories', CategoriesAction::class)->setName('categories');
     $app->get('/events', EventListAction::class)->setName('events');
+  
+    $app->get('/events/{id}', EventDetailsAction::class)->setName('event_detail');
 
     $app->post('/events/{id}/toggle-publish', EventTogglePublishAction::class)->setName('event_toggle_publish');
 

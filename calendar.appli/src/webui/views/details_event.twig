@@ -1,0 +1,58 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    Détail de l'événement
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="mb-3">{{ event.title }}</h2>
+            <p>
+                <strong>Catégorie :</strong>
+                {% if event.category is defined and event.category %}
+                       {{ event.category.label }}
+                {% else %}
+                    -
+                {% endif %}
+            </p>
+            <p>
+                <strong>Date :</strong>
+                {{ event.date_start|date('d/m/Y') }}
+                {% if event.date_end %}
+                    - {{ event.date_end|date('d/m/Y') }}
+                {% endif %}
+                {% if event.time %}
+                    à {{ event.time|slice(0,5) }}
+                {% endif %}
+            </p>
+            <p>
+                <strong>Prix :</strong>
+                {{ event.price ? event.price: 'Gratuit' }}
+            </p>
+            <p>
+                <strong>Description :</strong><br>
+                {{ event.description_html|raw }}
+            </p>
+            <p>
+                <strong>Statut :</strong>
+                {% if event.published %}
+                    <span class="badge bg-success">Publié</span>
+                {% else %}
+                    <span class="badge bg-secondary">Non publié</span>
+                {% endif %}
+            </p>
+            {% if event.images is defined and event.images|length > 0 %}
+                <div class="mb-3">
+                    <strong>Images :</strong><br>
+                    {% for img in event.images %}
+                        <img src="{{ img }}" alt="Image de l'événement" class="img-fluid mb-2" style="max-width:200px;">
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <a href="{{ url_for('events') }}" class="btn btn-outline-primary mt-3">← Retour à la liste des événements</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
