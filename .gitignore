@@ -41,3 +41,5 @@ calendar.appli/src/webui/views/cache/*
 
 vendor/
 composer.lock
+
+calendar.appli.web.ref
