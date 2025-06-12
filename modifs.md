@@ -7,4 +7,9 @@
 - ❌ events : changer le map()
 - ❌ ajouter les images
 ---
+- ❌ peaufiner le css
+- ❌ route /api
+- ❌ bouttons pour montrer direct tous les events ?
+
+---
 ✅
