@@ -3,14 +3,16 @@
 namespace calendar\core\webui\actions;
 
 use calendar\core\application_core\application\exceptions\CsrfTokenException;
-use Slim\Exception\HttpForbiddenException;
+use calendar\core\application_core\application\providers\CsrfTokenProvider;
+use calendar\core\application_core\application\useCases\UserServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use calendar\core\application_core\application\providers\CsrfTokenProvider;
+use calendar\core\application_core\application\useCases\UserService;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Views\Twig;
 
-class DisplayCategoryFormAction
+class DisplayUserFormAction
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -20,12 +22,12 @@ class DisplayCategoryFormAction
         try{
             $csrfToken = CsrfTokenProvider::generate();
             $twig = Twig::fromRequest($request);
-            return $twig->render($response, 'create_category_form.twig', [
-                'title' => 'Créer une catégorie',
+            return $twig->render($response, 'create_user_form.twig', [
+                'title' => 'Créer un user',
                 'csrf_token' => $csrfToken
             ]);
-        }catch (CsrfTokenException $e){
-            throw new HttpInternalServerErrorException($request, $e->getMessage());
+            }catch (CsrfTokenException $e){
+                throw new HttpInternalServerErrorException($request, $e->getMessage());
+            }
         }
     }
-}

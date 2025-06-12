@@ -3,6 +3,7 @@
 namespace calendar\core\application_core\application\useCases;
 
 use calendar\core\application_core\application\entities\User;
+use calendar\core\application_core\application\exceptions\UserServiceException;
 use Illuminate\Database\QueryException;
 
 class UserService implements UserServiceInterface 
@@ -17,7 +18,7 @@ class UserService implements UserServiceInterface
             $user->is_superadmin = false;
             $user->save();
         } catch (QueryException $e) {
-            throw new \Exception("Erreur lors de la création de l'utilisateur : " . $e->getMessage());
+            throw new UserServiceException("Erreur lors de la création de l'utilisateur : " . $e->getMessage());
         }
     }
 }
