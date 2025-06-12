@@ -7,12 +7,10 @@ namespace calendar\core\webui\actions;
 use calendar\core\application_core\application\exceptions\CsrfTokenException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\Twig;
-use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpForbiddenException;
-
 use calendar\core\application_core\application\providers\CsrfTokenProvider;
 use Slim\Exception\HttpInternalServerErrorException;
+use Slim\Views\Twig;
 
 class GetSignInFormAction
 {

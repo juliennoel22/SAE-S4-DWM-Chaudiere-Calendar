@@ -50,14 +50,7 @@ class CreateEventAction
         
         catch (EventServiceException $e) {
             throw new HttpInternalServerErrorException($request, $e->getMessage());
-            // $csrfToken = CsrfTokenProvider::generate();
-            // $categories = $this->categoryService->getAllCategories();
-            // return $twig->render($response, 'create.twig', [
-            //     'categories' => $categories,
-            //     'csrf_token' => $csrfToken,
-            //     'error' => $e->getMessage(),
-            //     'formData' => $data ?? []
-            // ]);
+            
         } catch (CsrfTokenException $e) {
             throw new HttpForbiddenException($request, $e->getMessage());
         }
