@@ -110,3 +110,31 @@ a:hover {
 .green-text-color {
     color: #28a745;
 }
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+}
