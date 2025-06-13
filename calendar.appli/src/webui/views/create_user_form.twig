@@ -22,6 +22,7 @@
                             <a href="{{ url_for('home', {'route': ''}) }}" class="btn btn-secondary-custom">Annuler</a>
                             <button type="submit" class="btn btn-primary-custom">Créer l'administrateur</button>
                         </div>
+                        <input type="hidden" name="csrf" value="{{ csrf_token }}">
                     </form>
                 </div>
             </div>
