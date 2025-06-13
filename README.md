@@ -139,7 +139,11 @@ flutter run
 
 - Voir le dossier `Consignes/` pour le cahier des charges détaillé.
 - Chaque sous-projet contient son propre README pour plus de détails techniques.
+### 📄 Liens vers les README des sous-projets
 
+- [Backend – LaChaudièreAgenda.core](./backend/README.md)
+- [Application Web – LaChaudièreAgenda.web](./calendar.appli.web/README.md)
+- [Application Mobile – LaChaudiere.app](./chaudiere_app/README.md)
 ---
 
 ## 📝 Fonctionnalités détaillées
