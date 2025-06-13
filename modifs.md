@@ -8,16 +8,16 @@
 - ❌ ajouter les images
 ---
 - ✅ peaufiner le css
-- ❌ route /api
-- ❌ bouttons pour montrer direct tous les events ?
+- ✅ route /api
+- ✅ bouttons pour montrer direct tous les events ?
 - ✅ page login
 ---
 - ✅ bouger le midlleware
-- ❌ appli mobile sur tel
+- ✅ appli mobile sur tel
 - ✅ sortir les session du provider dans authnprovider
 - ❌ pour dans les pages, demander au provider d'auth pour savoir si un user est connecté
 - ✅ publier sur docketu
-- ❌ lien github
+- ✅ lien github
 - ❌ écrire les README
   - 1
   - 2
