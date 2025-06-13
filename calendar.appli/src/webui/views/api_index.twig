@@ -1,0 +1,23 @@
+{% extends 'base.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block content %}
+<h1>Bienvenue sur l'API de La Chaudière</h1>
+<p>Consultez la documentation pour utiliser les différents endpoints.</p>
+
+<ul>
+    <li>
+        <a href="{{ url_for('api_category_list') }}">GET /api/category</a> - Liste des catégories
+    </li>
+    <li>
+        <a href="{{ url_for('api_event_list') }}">GET /api/events</a> - Liste de tous les événements
+    </li>
+    <li>
+        <a href="{{ url_for('api_event_list_by_category', {'id': 1}) }}">GET /api/category/{id}/event</a> - Événements d'une catégorie (remplacez <code>{id}</code> par l'identifiant de la catégorie)
+    </li>
+    <li>
+        <a href="{{ url_for('api_event_detail', {'id': 1}) }}">GET /api/evenements/{id}</a> - Détail d'un événement (remplacez <code>{id}</code> par l'identifiant de l'événement)
+    </li>
+</ul>
+{% endblock %}
