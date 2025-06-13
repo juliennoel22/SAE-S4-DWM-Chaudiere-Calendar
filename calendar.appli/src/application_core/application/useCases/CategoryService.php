@@ -14,8 +14,8 @@ class CategoryService implements CategoryServiceInterface
     {
         try {
             $category = new Category();
-            $category->label = $label;
-            $category->description = $description ?? '';
+            $category->label = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+            $category->description = htmlspecialchars($description ?? '', ENT_QUOTES, 'UTF-8');
             $category->created_at = date('Y-m-d H:i:s');
             $category->save();
 

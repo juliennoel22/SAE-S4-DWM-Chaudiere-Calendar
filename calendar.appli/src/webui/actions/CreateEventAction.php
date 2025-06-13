@@ -15,6 +15,7 @@ use calendar\core\application_core\application\useCases\CategoryServiceInterface
 use calendar\core\application_core\application\useCases\CategoryService;
 use calendar\core\application_core\application\providers\CsrfTokenProvider;
 use League\CommonMark\CommonMarkConverter;
+use Slim\Exception\HttpBadRequestException;
 
 class CreateEventAction
 {
@@ -32,10 +33,13 @@ class CreateEventAction
         if (!isset($_SESSION['user'])) {
             throw new HttpForbiddenException($request, "Vous devez être connecté pour accéder à cette page");
         }
+        $data = $request->getParsedBody();
+        if (empty($data['title']) || empty($data['description_md']) || empty($data['date_start']) || empty($data['category_id'])) {
+            throw new HttpBadRequestException($request, "Certains champs obligatoires sont manquants.");
+        }
+        
         try {
-            $data = $request->getParsedBody();
             CsrfTokenProvider::check($data['csrf'] ?? '');
-            
             // Convertir le markdown en HTML
             $converter = new CommonMarkConverter();
             $data['description_html'] = $converter->convert($data['description_md']);
