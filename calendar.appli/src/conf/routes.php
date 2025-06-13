@@ -36,11 +36,11 @@ return function ($app): object {
 
     $app->post('/events/{id}/toggle-publish', EventTogglePublishAction::class)->setName('event_toggle_publish');
 
-    $app->get('/create/event', DisplayEventFormAction::class)->setName('create_event_form'); ////
-    $app->post('/create/event', CreateEventAction::class)->setName('create_event_post'); ///
+    $app->get('/create/event', DisplayEventFormAction::class)->setName('create_event_form');
+    $app->post('/create/event', CreateEventAction::class)->setName('create_event_post');
 
-    $app->get('/create/user', DisplayUserFormAction::class)->setName('create_user_form'); ////
-    $app->post('/create/user', CreateUserAction::class)->setName('create_user_form'); ////
+    $app->get('/create/user', DisplayUserFormAction::class)->setName('create_user_form');
+    $app->post('/create/user', CreateUserAction::class)->setName('create_user_form');
 
     $app->get('/create/category', DisplayCategoryFormAction::class)->setName('create_category_form');
     $app->post('/create/category', CreateCategoryAction::class)->setName('create_category_post');
@@ -50,7 +50,7 @@ return function ($app): object {
     $app->get('/api/category/{id}/events', ApiEventListByCategoryAction::class)->setName('api_event_list_by_category');
     $app->get('/api/event/{id}', ApiEventDetailAction::class)->setName('api_event_detail');
 
-    $app->get('/api', ApiIndexAction::class);
+    $app->get('/api', ApiIndexAction::class)->setName('api_index');
 
     return $app;
 };
