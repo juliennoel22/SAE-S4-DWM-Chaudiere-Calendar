@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use calendar\core\application_core\middleware\CorsMiddleware;
+use calendar\core\webui\middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use calendar\core\utils\Eloquent;
 use Slim\Views\Twig;

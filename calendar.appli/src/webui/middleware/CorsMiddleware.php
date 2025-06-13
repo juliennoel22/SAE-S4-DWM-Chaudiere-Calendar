@@ -1,6 +1,6 @@
 <?php
 
-namespace calendar\core\application_core\middleware;
+namespace calendar\core\webui\middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
