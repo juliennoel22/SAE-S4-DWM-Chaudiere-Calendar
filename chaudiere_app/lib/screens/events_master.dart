@@ -63,7 +63,6 @@ class _EventsMasterState extends State<EventsMaster> {
       _categories = categories;
     });
   } catch (e) {
-    // Affiche une erreur ou ignore
   } finally {
     setState(() {
       _isLoading = false;
