@@ -25,4 +25,15 @@ class ApiService {
       throw Exception('Erreur lors du chargement du détail de l\'événement');
     }
   }
+
+  static Future<List<String>> fetchCategories() async {
+    final response = await http.get(Uri.parse('http://localhost:8080/api/categories'));
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      // Adapte selon la structure de ta réponse
+      return data.map((c) => c['label'] as String).toList();
+    } else {
+      throw Exception('Erreur lors du chargement des catégories');
+    }
+  }
 }
