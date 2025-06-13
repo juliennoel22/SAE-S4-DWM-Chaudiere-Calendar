@@ -51,8 +51,13 @@ class SignInAction {
             
             $data = $request->getParsedBody();
             CsrfTokenProvider::check($data['csrf'] ?? '');
-            $this->authnProvider->signin($data['email'], $data['password']);
-            
+            $user = $this->authnProvider->signin($data['email'], $data['password']);
+
+            // la session
+            session_regenerate_id(true);
+            $_SESSION['user'] = $user->email;
+            $_SESSION['is_adm'] = $user->is_superadmin;
+
             // Redirection vers la page d'accueil après connexion réussie
             return $response
             ->withHeader('Location', '/')
@@ -60,7 +65,7 @@ class SignInAction {
             
         } catch (CsrfTokenException $e) {
             return $this->renderFormWithError($request, $response, 'Session expirée ou formulaire invalide, veuillez réessayer');
-        }catch (UserNotFoundException $e) {
+        } catch (UserNotFoundException $e) {
             return $this->renderFormWithError($request, $response, 'Utilisateur introuvable');
         } catch (AuthnException $e) {
             return $this->renderFormWithError($request, $response, 'Mot de passe incorrect');

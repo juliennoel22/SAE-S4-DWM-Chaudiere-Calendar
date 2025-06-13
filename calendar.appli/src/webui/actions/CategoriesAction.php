@@ -35,7 +35,8 @@ class CategoriesAction
             return $twig->render($response, 'categories.twig', [
                 'categories' => $categories,
                 'createCategoryUrl' => $createCategoryUrl,
-                'user' => $user
+                'user' => $user,
+                'is_superadmin' => $_SESSION['is_adm']
 
             ]);
         }catch(CategoryException $e){
