@@ -30,6 +30,10 @@ class EventService implements EventServiceInterface
     */
     public function createEvent(array $data): array
     {
+        if (trim($data['title'] ?? '') === '') {
+            throw new EventServiceException("Le titre de l'événement est obligatoire.");
+        }
+        
         if (!empty($data['date_end']) && $data['date_end'] < $data['date_start']) {
             throw new EventServiceException("La date de fin ne peut pas être antérieure à la date de début");
             
