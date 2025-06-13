@@ -111,7 +111,7 @@ a:hover {
     color: #28a745;
 }
 
-form {
+form:not(.form-unpublished) {
     max-width: 400px;
     margin: 0 auto;
     padding: 16px;

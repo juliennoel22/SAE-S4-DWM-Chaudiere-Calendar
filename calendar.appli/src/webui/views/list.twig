@@ -71,9 +71,9 @@
                         {% endif %}
                     </td>
                     <td>
-                        <form method="post" action="/events/{{ event.id }}/toggle-publish" style="display:inline;">
-                            <button type="submit" class="btn {% if event.published %}btn-muted-custom{% else %}btn-primary-custom{% endif %}">
-                                {% if event.published %}<span class="green-text-color">Dépublier</span>{% else %}Publier{% endif %}
+                        <form method="post" action="/events/{{ event.id }}/toggle-publish" class="form-unpublished">
+                            <button type="submit" class="btn {% if event.published %}btn-muted-custom bg-danger text-white{% else %}btn-primary-custom{% endif %}">
+                                {% if event.published %}<span class="text-white">Dépublier</span>{% else %}Publier{% endif %}
                             </button>
                         </form>
                     </td>
