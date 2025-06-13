@@ -48,12 +48,13 @@ Application mobile Flutter pour consulter les événements culturels proposés p
 
 
 ## 🧱 Structure du projet
+```
 lib/
 ├── main.dart
 ├── chaudiere_app.dart # Configuration de l'app
 ├── models/ # Modèles de données (ex: Event)
 │ └── event.dart
-  └── event_detail.dart
+│  └── event_detail.dart
 ├── providers/ # Provider pour thème clair/sombre
 │ └── theme_provider.dart
 ├── screens/ # Écrans principaux
@@ -61,7 +62,7 @@ lib/
 │ └── event_detail.dart # Détail d'un événement
 └── services/ # Appels API HTTP
 └── api_service.dart
-
+```
 
 ## 🚀 Lancer l’application
 > ⚠️ **ATTENTION**  
@@ -70,5 +71,4 @@ lib/
 cd chaudiere_app   # si ce n’est pas déjà le cas
 flutter pub get
 flutter run
-
-
+```
