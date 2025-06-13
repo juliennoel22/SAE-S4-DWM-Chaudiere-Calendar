@@ -7,6 +7,10 @@ use Slim\Factory\AppFactory;
 use calendar\core\utils\Eloquent;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
+use Slim\Exception\HttpForbiddenException;
+use Slim\Exception\HttpInternalServerErrorException;
 
 // Charger Eloquent avec le fichier de configuration
 Eloquent::init(__DIR__ . '/calendar.db.conf.ini');
@@ -31,6 +35,42 @@ $app->setBasePath(rtrim($scriptName, '/'));
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 $app->add(new CorsMiddleware);
+
+// 404 Not Found
+$errorMiddleware->setErrorHandler(
+    HttpNotFoundException::class,
+    function (Request $request, Throwable $exception) use ($app) {
+        $response = $app->getResponseFactory()->createResponse();
+        $view = Twig::fromRequest($request);
+        return $view->render($response->withStatus(404), 'error.twig', [
+            'message' => $exception->getMessage() ?: 'Page non trouvée'
+        ]);
+    }
+);
+
+// 403 Forbidden
+$errorMiddleware->setErrorHandler(
+    HttpForbiddenException::class,
+    function (Request $request, Throwable $exception) use ($app) {
+        $response = $app->getResponseFactory()->createResponse();
+        $view = Twig::fromRequest($request);
+        return $view->render($response->withStatus(403), 'error.twig', [
+            'message' => $exception->getMessage() ?: 'Accès interdit'
+        ]);
+    }
+);
+
+// 500 Internal Server Error
+$errorMiddleware->setErrorHandler(
+    HttpInternalServerErrorException::class,
+    function (Request $request, Throwable $exception) use ($app) {
+        $response = $app->getResponseFactory()->createResponse();
+        $view = Twig::fromRequest($request);
+        return $view->render($response->withStatus(500), 'error.twig', [
+            'message' => $exception->getMessage() ?: 'Erreur interne du serveur'
+        ]);
+    }
+);
 
 // Charger les routes
 $app = (require __DIR__ . '/routes.php')($app);

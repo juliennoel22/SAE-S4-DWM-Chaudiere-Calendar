@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use \calendar\core\application_core\middleware\CorsMiddleware;
-
+use calendar\core\webui\errors\CustomErrorHandler;
+use Slim\Factory\AppFactory;
+use Slim\Views\Twig;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 ini_set('display_errors', 1);
@@ -17,8 +19,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 /* Application bootstrap */
 $app = require_once __DIR__ . '/../src/conf/bootstrap.php';
-
-$app->add(new CorsMiddleware);
 
 // Run the application
 $app->run();

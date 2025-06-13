@@ -26,9 +26,7 @@ class CategoriesAction
         try{
             $categories = $this->categorieService->getAllCategories();
 
-            //echo password_hash('PASSWORD', PASSWORD_DEFAULT);
             $user = $_SESSION['user'] ?? null;
-            ///echo isset($_SESSION['user']) ? $_SESSION['user']: "pas d'id";/////
             $routeParser = $request->getAttribute('routeParser');
             $createCategoryUrl = $routeParser ? $routeParser->urlFor('categoryCreation') : '/create/category';
 
@@ -41,9 +39,7 @@ class CategoriesAction
 
             ]);
         }catch(CategoryException $e){
-          throw new HttpInternalServerErrorException($request, $e->getMessage());
+             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }  
-    
-    
     }
 }

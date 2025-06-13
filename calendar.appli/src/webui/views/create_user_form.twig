@@ -1,6 +1,6 @@
 {% extends 'base.twig' %}
 
-{% block title %}Créer un administrateur - La Chaudière Agenda{% endblock %}
+{% block title %}Créer un administrateur{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
@@ -9,7 +9,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="mb-4 text-center">Créer un nouvel administrateur</h2>
-                    <form method="post" action="">
+                    <form method="post" action="{{ url_for('create_user_form') }}">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email :</label>
                             <input type="email" id="email" name="email" class="form-control" required>

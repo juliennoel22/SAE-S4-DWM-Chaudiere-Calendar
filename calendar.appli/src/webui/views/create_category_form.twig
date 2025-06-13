@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Créer une nouvelle catégorie</h1>
+    <h1 class="text-primary-color">Créer une nouvelle catégorie</h1>
     
     {% if error is defined %}
-    <div class="alert alert-danger">
+    <div class="alert bg-primary-color text-white">
         {{ error }}
     </div>
     {% endif %}
@@ -15,13 +15,13 @@
     <form method="POST" action="{{ url_for('create_category_post') }}">
         
         <div class="mb-3">
-            <label for="label" class="form-label">Libellé *</label>
+            <label for="label" class="form-label text-secondary-color">Libellé *</label>
             <input type="text" class="form-control" id="label" name="label" required
                 value="{{ formData.label ?? '' }}">
         </div>
         
         <div class="mb-3">
-            <label for="description" class="form-label">Description (format Markdown)</label>
+            <label for="description" class="form-label text-secondary-color">Description (format Markdown)</label>
             <textarea class="form-control" id="description" name="description" rows="5">{{ formData.description ?? '' }}</textarea>
             <div class="form-text">Utilisez la syntaxe Markdown pour mettre en forme votre description.</div>
         </div>
@@ -29,8 +29,8 @@
         <input type="hidden" name="csrf" value="{{ csrf_token }}">
         
         <div class="d-flex justify-content-between">
-        <a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-secondary">Annuler</a>
-            <button type="submit" class="btn btn-primary">Créer la catégorie</button>
+            <a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-secondary-custom">Annuler</a>
+            <button type="submit" class="btn btn-primary-custom">Créer la catégorie</button>
         </div>
     </form>
 </div>

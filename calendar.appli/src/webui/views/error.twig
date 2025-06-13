@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block content %}
+<div class="alert" role="alert" style="background-color: var(--primary-color); color: var(--h1-color); padding: 16px; border-radius: 8px; box-shadow: var(--shadow);">
+    <h4 class="alert-heading" style="margin-bottom: 8px; font-size: 1.5em;">Erreur</h4>
+    <p style="margin-bottom: 16px; font-size: 1.2em;">{{ message }}</p>
+    <hr style="border-color: var(--h1-color); margin: 16px 0;">
+    <a href="{{ url_for('redirect') }}" class="btn-primary-custom" style="display: inline-block; text-align: center; text-decoration: none;">Retour à l'accueil</a>
+</div>
+{% endblock %}

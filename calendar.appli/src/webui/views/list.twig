@@ -1,28 +1,23 @@
 {% extends 'base.twig' %}
 
 {% block title %}
-
-<h2 class="mb-4 d-flex justify-content-between align-items-center">
-    <span>Liste des événements</span>
-    <a href="/events/create" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Créer un événement
-    </a>
-</h2>
+  Liste des événements
 {% endblock %}
+
 {% block content %}
-<a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-outline-secondary mb-3">
+<a href="{{ url_for('categories', {'route': ''}) }}" class="btn btn-secondary-custom mb-3">
     &larr; Retour aux catégories
 </a>
-<h2 class="mb-4 d-flex justify-content-between align-items-center">
+<h2 class="mb-4 d-flex justify-content-between align-items-center text-primary-color">
     <span>Liste des événements</span>
-    <a href="/events/create" class="btn btn-primary">
+    <a href="{{ url_for('create_event_form', {'route': ''}) }}" class="btn btn-primary-custom">
         <i class="fas fa-plus"></i> Créer un événement
     </a>
 </h2>
 <form method="get" action="" class="mb-4">
     <div class="row g-2 align-items-end">
         <div class="col-auto">
-            <label for="category_id" class="form-label mb-0">Filtrer par catégorie :</label>
+            <label for="category_id" class="form-label mb-0 text-secondary-color">Filtrer par catégorie :</label>
         </div>
         <div class="col-auto">
             <select name="category_id" id="category_id" class="form-select" onchange="this.form.submit()">
@@ -35,10 +30,10 @@
     </div>
 </form>
 <div class="table-responsive card p-0">
-
-    <table class="table table-striped ">
-        <thead>
+    <table class="table table-striped striped">
+        <thead class="bg-primary-color text-white">
             <tr>
+                <th></th>
                 <th>Titre</th>
                 <th>Catégorie</th>
                 <th>Date(s)</th>
@@ -49,12 +44,17 @@
         <tbody>
             {% for event in events %}
                 <tr>
+                    <td>
+                        <a href="{{ url_for('event_detail', {'id': event.id}) }}" class="btn btn-secondary-custom">
+                            Voir détails
+                        </a>
+                    </td>
                     <td>{{ event.title }}</td>
                     <td>
                         {% if event.category is defined and event.category %}
                             {{ event.category.label }}
                         {% else %}
-                            -
+                            <span class="text-muted">-</span>
                         {% endif %}
                     </td>
                     <td>
@@ -65,30 +65,25 @@
                     </td>
                     <td>
                         {% if event.published %}
-                            <span class="badge bg-success">Publié</span>
+                            <span class="badge bg-primary-color green-text-color">Publié</span>
                         {% else %}
-                            <span class="badge bg-secondary">Non publié</span>
+                            <span class="badge text-muted">Non publié</span>
                         {% endif %}
                     </td>
                     <td>
-                        <form method="post" action="/events/{{ event.id }}/toggle-publish" style="display:inline;">
-                            <button type="submit" class="btn btn-sm {% if event.published %}btn-warning{% else %}btn-success{% endif %}">
-                                {% if event.published %}Dépublier{% else %}Publier{% endif %}
+                        <form method="post" action="/events/{{ event.id }}/toggle-publish" class="form-unpublished">
+                            <button type="submit" class="btn {% if event.published %}btn-muted-custom bg-danger text-white{% else %}btn-primary-custom{% endif %}">
+                                {% if event.published %}<span class="text-white">Dépublier</span>{% else %}Publier{% endif %}
                             </button>
                         </form>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5" class="text-center text-muted">Aucun événement trouvé.</td>
+                    <td colspan="6" class="text-center text-muted">Aucun événement trouvé.</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-<style>
-    .table th, .table td {
-        vertical-align: middle;
-    }
-</style>
 {% endblock %}

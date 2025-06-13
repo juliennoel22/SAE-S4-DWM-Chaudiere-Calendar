@@ -3,40 +3,40 @@
 
 namespace calendar\core\webui\actions;
 
+use calendar\core\application_core\application\exceptions\UserServiceException;
 use calendar\core\application_core\application\useCases\UserServiceInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use calendar\core\application_core\application\useCases\UserService;
+use Slim\Exception\HttpForbiddenException;
+use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig;
-class UserCreateAction
+class CreateUserAction
 {
     
     private UserServiceInterface $userService;
-
+    
     public function __construct()
     {
         $this->userService = new UserService();
     }
-
+    
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!isset($_SESSION['user'])) {
             throw new HttpNotFoundException($request, "Vous devez être connecté pour accéder à cette page");
         }
-        $twig = Twig::fromRequest($request);
-        // echo $_SESSION["id_a"]
-        // Vérifier que l'utilisateur courant est super-admin (à adapter selon ton auth)
+        // Vérifier que l'utilisateur courant est super-admin 
         if (!($_SESSION['is_adm'] ?? false)) {
-            return $response->withStatus(403);
+            throw new HttpForbiddenException($request, "Vous n'avez pas les droits pour créer un admin");
         }
-
-        if ($request->getMethod() === 'POST') {
+        try{
             $data = $request->getParsedBody();
             $this->userService->createUser($data['email'], $data['password']);
             return $response->withHeader('Location', '/categories')->withStatus(302);
+        }catch(UserServiceException $e){
+            throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
-
-        return $twig->render($response, 'user_create.twig');
     }
 }
