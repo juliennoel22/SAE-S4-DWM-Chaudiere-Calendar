@@ -4,7 +4,7 @@ import '../models/event.dart';
 import '../models/event_detail.dart';
 
 class ApiService {
-  static const String apiUrl = 'http://localhost:8080/api/events?sort=titre';
+  static const String apiUrl = 'http://docketu.iutnc.univ-lorraine.fr:8888/api/events?sort=titre';
 
   static Future<List<Event>> fetchEvents() async {
     final response = await http.get(Uri.parse(apiUrl));
@@ -17,7 +17,7 @@ class ApiService {
   }
 
   static Future<EventDetailModel> fetchEventDetail(int id) async {
-    final response = await http.get(Uri.parse('http://localhost:8080/api/event/$id'));
+    final response = await http.get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:8888/api/event/$id'));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return EventDetailModel.fromJson(data);
@@ -27,7 +27,7 @@ class ApiService {
   }
 
   static Future<List<String>> fetchCategories() async {
-    final response = await http.get(Uri.parse('http://localhost:8080/api/category'));
+    final response = await http.get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:8888/api/category'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data.map((c) => c['label'] as String).toList();
