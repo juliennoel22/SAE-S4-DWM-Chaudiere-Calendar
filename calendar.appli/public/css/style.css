@@ -138,3 +138,37 @@ form input {
 form button {
     width: 100%;
 }
+
+.alert {
+    background-color: var(--primary-color);
+    color: var(--h1-color);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.alert-heading {
+    margin-bottom: 8px;
+    font-size: 1.5em;
+}
+
+.alert hr {
+    border-color: var(--h1-color);
+    margin: 16px 0;
+}
+
+.alert a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--h1-color);
+    background-color: var(--secondary-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.alert a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
