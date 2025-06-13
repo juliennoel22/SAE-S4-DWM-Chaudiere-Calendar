@@ -187,4 +187,4 @@ flutter run
 - Navigation Master/Détail fluide
 - Icône personnalisée et splash screen
 - Chargement dynamique depuis l’API publique
-- (Optionnel) Persistance locale via SQLite
+- (Non réalisé) Persistance locale via SQLite
