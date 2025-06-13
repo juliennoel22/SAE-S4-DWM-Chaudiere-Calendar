@@ -45,8 +45,8 @@ return function ($app): object {
 
     $app->get('/api/category', ApiCategoryListAction::class);
     $app->get('/api/events', ApiEventListAction::class);
-    $app->get('/api/category/{id}/event', ApiEventListByCategoryAction::class);
-    $app->get('/api/evenements/{id}', ApiEventDetailAction::class);
+    $app->get('/api/category/{id}/events', ApiEventListByCategoryAction::class);
+    $app->get('/api/event/{id}', ApiEventDetailAction::class);
 
   
     return $app;
