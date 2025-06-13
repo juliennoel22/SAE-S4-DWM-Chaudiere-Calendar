@@ -23,7 +23,7 @@
   - ✅ JS
   - ✅ FLUTTER
   - ❌ PHP
-  - ⌛Final
+  - ✅Final
   - ❌Les exporter en pdf
 ---
 ✅
