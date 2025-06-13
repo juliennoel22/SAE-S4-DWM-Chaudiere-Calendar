@@ -9,10 +9,10 @@ of ⁨3⁩
 
 
 
-IUT Nancy-Charlemagne BUT Informatique S4 – RA-DWM
+IUT Nancy-Charlemagne BUT Informatique S4 - RA-DWM
 SAE Atelier de développement d’application web
 Semestre 4
-Sujet Architecture – développement serveur
+Sujet Architecture - développement serveur
 L'objectif de la SAE est de développer une application web et mobile se composant
 • d’un backend gérant des données et proposant des services accessibles pour certains via une
 interface HTML et pour d’autres via une api retournant des données au format JSON. Le
@@ -60,16 +60,16 @@ dans le même format que la fonctionnalité 3, en ajoutant le filtrage par caté
 5) Formulaire d’authentification : un utilisateur doit s’authentifier pour pouvoir créer des entrées,
 en fournissant un identifiant (@mail) et un mot de passe.
 6) Contrôle d’accès : seuls les utilisateurs inscrits et authentifiés peuvent créer des entrées.
-7) Api : liste des catégories – la liste des catégories existantes est disponible au format JSON sur
+7) Api : liste des catégories - la liste des catégories existantes est disponible au format JSON sur
 l’url /api/categories
 8) Api : liste des événements - la liste des événements est disponible au format JSON sur l’url
 /api/evenements. Pour une entrée dans cette liste, seuls le titre, la date et la catégorie, sont
 retournés, accompagnés de l’url permettant d’obtenir le détail complet de l’événement. La liste
 est triée par date.
-9) Api : événements d’une catégorie – la liste des événement d’une catégorie est disponible au
+9) Api : événements d’une catégorie - la liste des événement d’une catégorie est disponible au
 format JSON sur l’url /api/categories/{id}/evenements. Mêmes données retournées
 que pour la fonctionnalité 8.
-10) Api : détail d’un événement – un événement décrit de façon complète est disponible au format
+10) Api : détail d’un événement - un événement décrit de façon complète est disponible au format
 JSON à l’url /api/evenements/{id}
 11) Api : Liste d’événements datés : pour les fonctionnalités 8 et 9, possibilité de préciser si on
 souhaite obtenir les événements des mois passés, du mois courant, ou des mois futurs. On doit

@@ -2,8 +2,8 @@
 
 Application mobile Flutter pour consulter les événements culturels proposés par **La Chaudière**. Elle consomme une API REST externe, affiche la liste des événements, permet la recherche, le filtrage, le tri, et propose une vue détail complète.
 
-> Projet SAE – Atelier développement d’applications  
-> BUT Informatique – Semestre 4  
+> Projet SAE - Atelier développement d’applications  
+> BUT Informatique - Semestre 4  
 > Rendu : 14 juin 2025
 
 ---

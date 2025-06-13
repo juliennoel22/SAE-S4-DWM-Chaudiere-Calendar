@@ -1,5 +1,5 @@
 
-IUT Nancy-Charlemagne BUT Informatique S4 – RA-DWM
+IUT Nancy-Charlemagne BUT Informatique S4 - RA-DWM
 SAE Atelier de développement d’application web
 Semestre 4
 L'objectif de la SAE est de développer une application web et mobile se composant
