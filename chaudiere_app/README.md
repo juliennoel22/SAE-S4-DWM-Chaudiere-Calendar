@@ -1,3 +1,5 @@
+> ⚠️ **ATTENTION**  
+> Les images mises en place ci-dessous sont reprises par l'utilisation de l'application sous google, l'application fonctionne sans problème aussi sous un émulateur.
 # 📱 LaChaudiere.app
 
 Application mobile Flutter pour consulter les événements culturels proposés par **La Chaudière**. Elle consomme une API REST externe, affiche la liste des événements, permet la recherche, le filtrage, le tri, et propose une vue détail complète.
