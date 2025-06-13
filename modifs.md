@@ -2,14 +2,21 @@
 - ✅ Double ajout d'un évenment lors de sa création (que quadn c'est un événement publié je crois)
 - ✅ Date fin qui peut être ultérieure à la date de début, sans erreur
 - ✅ Lors de la création d'un événement, mettre un symbole "€" dans le formulaire de prix
-- ❌ redirection sur la page d'erreur en cas d'erreur avec le message associé
+- ✅ redirection sur la page d'erreur en cas d'erreur avec le message associé
 - ✅ mettre les tokens pour les forms
-- ❌ events : changer le map()
+- ✅ events : changer le map()
 - ❌ ajouter les images
 ---
 - ❌ peaufiner le css
 - ❌ route /api
 - ❌ bouttons pour montrer direct tous les events ?
-- ❌ page login
+- ✅ page login
+---
+- ❌ bouger le midlleware
+- ❌ appli mobile sur tel
+- ❌ sortir les session du provider dans authnprovider
+- ❌ pour dans les pages, demander au provider d'auth pour savoir si un user est connecté
+- ❌ publier sur docketu
+- ❌ lien github
 ---
 ✅
