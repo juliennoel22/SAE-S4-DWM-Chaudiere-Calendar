@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use calendar\core\webui\actions\ApiCategoryListAction;
 use calendar\core\webui\actions\ApiEventDetailAction;
 use calendar\core\webui\actions\ApiEventListAction;
@@ -20,6 +21,7 @@ use calendar\core\webui\actions\RedirectAction;
 use calendar\core\webui\actions\LogoutAction;
 use calendar\core\webui\actions\EventDetailsAction;
 use calendar\core\webui\actions\HomeAction;
+use calendar\core\webui\actions\ApiIndexAction;
 
 return function ($app): object {
     $app->get('/', RedirectAction::class)->setName('redirect');
@@ -31,25 +33,26 @@ return function ($app): object {
 
     $app->get('/categories', CategoriesAction::class)->setName('categories');
     $app->get('/events', EventListAction::class)->setName('events');
-  
+
     $app->get('/events/{id}', EventDetailsAction::class)->setName('event_detail');
 
     $app->post('/events/{id}/toggle-publish', EventTogglePublishAction::class)->setName('event_toggle_publish');
 
-    $app->get('/create/event', DisplayEventFormAction::class)->setName('create_event_form');////
-    $app->post('/create/event', CreateEventAction::class)->setName('create_event_post');///
-    
-    $app->get('/create/user', DisplayUserFormAction::class)->setName('create_user_form');////
-    $app->post('/create/user', CreateUserAction::class)->setName('create_user_form');////
+    $app->get('/create/event', DisplayEventFormAction::class)->setName('create_event_form');
+    $app->post('/create/event', CreateEventAction::class)->setName('create_event_post');
+
+    $app->get('/create/user', DisplayUserFormAction::class)->setName('create_user_form');
+    $app->post('/create/user', CreateUserAction::class)->setName('create_user_form');
 
     $app->get('/create/category', DisplayCategoryFormAction::class)->setName('create_category_form');
     $app->post('/create/category', CreateCategoryAction::class)->setName('create_category_post');
 
-    $app->get('/api/category', ApiCategoryListAction::class);
-    $app->get('/api/events', ApiEventListAction::class);
-    $app->get('/api/category/{id}/event', ApiEventListByCategoryAction::class);
-    $app->get('/api/evenements/{id}', ApiEventDetailAction::class);
+    $app->get('/api/category', ApiCategoryListAction::class)->setName('api_category_list');
+    $app->get('/api/events', ApiEventListAction::class)->setName('api_event_list');
+    $app->get('/api/category/{id}/events', ApiEventListByCategoryAction::class)->setName('api_event_list_by_category');
+    $app->get('/api/event/{id}', ApiEventDetailAction::class)->setName('api_event_detail');
 
-  
+    $app->get('/api', ApiIndexAction::class)->setName('api_index');
+
     return $app;
 };
