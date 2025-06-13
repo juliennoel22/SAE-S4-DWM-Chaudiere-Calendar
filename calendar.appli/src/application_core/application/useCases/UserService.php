@@ -8,12 +8,19 @@ use Illuminate\Database\QueryException;
 
 class UserService implements UserServiceInterface 
 {
-
+    
     public function createUser(string $email, string $password): void
     {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new UserServiceException("Adresse email invalide");
+        }
+        if (User::where('email', $email)->exists()) {
+            throw new UserServiceException("Un utilisateur avec cet email existe déjà");
+        }
+        
         try {
             $user = new User();
-            $user->email = $email;
+            $user->email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
             $user->password_hash = password_hash($password, PASSWORD_DEFAULT);
             $user->is_superadmin = false;
             $user->save();

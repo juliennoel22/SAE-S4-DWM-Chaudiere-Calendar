@@ -29,21 +29,13 @@
         <h1 class="mb-0 me-auto">
             <a class="text-light text-decoration-none" href="{{ url_for('redirect') }}">LaChaudière.net</a>
         </h1>
-        {% if user is not none and is_superadmin == true %}
-            <a class="btn btn-sm btn-outline-light ms-3" href="{{ url_for('create_user_form') }}">Créer un admin</a>
-        {% endif %}
+       {% if user is not none %}
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-light ms-3">
+            Déconnexion
+            </a>
+        {% endif %}   
     </div>
 </header>
-
-<nav class="navbar navbar-expand-lg navbar-light mb-4">
-<div class="container">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% if user is not none %}
-            <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
-        {% endif %}    
-    </ul>
-</div>
-</nav>
 
 <main class="container">
     {% block content %}
@@ -53,7 +45,10 @@
 
 <footer class="bg-light text-center text-muted py-3 d-flex justify-content-center align-items-center flex-row">
     <div class="container d-flex justify-content-center align-items-center flex-row">
-        <p class="mb-0">© 2025 LaChaudière.net</p>
+        <p class="mb-0">
+            © 2025
+            <a href="https://github.com/juliennoel22/SAE-S4-DWM-Chaudiere-Calendar" target="_blank">LaChaudière.net</a>
+        </p>
         <span class="mx-2">|</span>
         <p class="mb-0">Conçu par
             <a href="https://github.com/juliennoel22">Julien</a>,
@@ -63,4 +58,6 @@
         </p>
     </div>
 </footer>
+</body>
+</html>
 

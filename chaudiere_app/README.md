@@ -1,16 +1,66 @@
-# la_chaudiere_app
+# 📱 LaChaudiere.app
 
-A new Flutter project.
+Application mobile Flutter pour consulter les événements culturels proposés par **La Chaudière**. Elle consomme une API REST externe, affiche la liste des événements, permet la recherche, le filtrage, le tri, et propose une vue détail complète.
 
-## Getting Started
+> Projet SAE - Atelier développement d’applications  
+> BUT Informatique - Semestre 4  
+> Rendu : 14 juin 2025
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📸 Fonctionnalités réalisées
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🗂️ Affichage de la liste des événements
+- Liste alphabétique avec titre, type et date.
+- Chargement dynamique depuis l'API.
+- Thème clair/sombre intégré.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### 🔍 Recherche d’événements
+- Recherche en direct par titre.
+- Résultats mis à jour dynamiquement.
+
+
+
+### 🧭 Filtrage par catégorie
+- Boutons ou menu déroulant pour filtrer les événements selon leur type (concert, expo, etc.).
+
+### 🔃 Tri des événements
+- Tri personnalisable :
+  - Par date (↑ / ↓)
+  - Par titre
+  - Par type
+
+### 📄 Vue détail d’un événement
+- Affichage complet d’un événement : description, lieu, date, image, type, etc.
+- Navigation Master/Détail fluide.
+
+### 🌗 Thème clair / sombre
+- Toggle entre mode clair et mode sombre via Provider.
+
+
+## 🧱 Structure du projet
+lib/
+├── main.dart
+├── chaudiere_app.dart # Configuration de l'app
+├── models/ # Modèles de données (ex: Event)
+│ └── event.dart
+  └── event_detail.dart
+├── providers/ # Provider pour thème clair/sombre
+│ └── theme_provider.dart
+├── screens/ # Écrans principaux
+│ ├── event_master.dart # Liste, tri, recherche
+│ └── event_detail.dart # Détail d'un événement
+└── services/ # Appels API HTTP
+└── api_service.dart
+
+
+## 🚀 Lancer l’application
+> ⚠️ **ATTENTION**  
+> Avant de lancer les commandes suivantes, assurez-vous que vous êtes bien **dans le répertoire `chaudiere_app`** (là où se trouve `pubspec.yaml`).
+```bash
+cd chaudiere_app   # si ce n’est pas déjà le cas
+flutter pub get
+flutter run
+
+

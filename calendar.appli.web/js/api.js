@@ -1,5 +1,5 @@
-// const API_BASE_URL = 'http://localhost:8080/api';
-const API_BASE_URL = 'http://docketu.iutnc.univ-lorraine.fr:8888/api';
+const API_BASE_URL = 'http://localhost:8888/api';
+// const API_BASE_URL = 'http://docketu.iutnc.univ-lorraine.fr:8888/api';
 
 async function fetchFromApi(endpoint) {
     try {
@@ -25,9 +25,9 @@ export async function fetchEventById(id) {
 }
 
 export async function fetchCategories() {
-    return await fetchFromApi('/category');
+    return await fetchFromApi('/categories');
 }
 
 export async function fetchEventsByCategory(categoryId) {
-    return await fetchFromApi(`/category/${categoryId}/events`);
+    return await fetchFromApi(`/categories/${categoryId}/events`);
 }

@@ -9,10 +9,10 @@ of ⁨2⁩
 
 
 
-IUT Nancy-Charlemagne BUT Informatique S4 – RA-DWM
+IUT Nancy-Charlemagne BUT Informatique S4 - RA-DWM
 SAE Atelier de développement d’application web
 Semestre 4
-Sujet Flutter – développement d’une application mobile
+Sujet Flutter - développement d’une application mobile
 L'objectif de la SAE est de développer une application web se composant d’un backend gérant des
 données et proposant des services accessibles pour certains via une interface HTML et pour d’autres
 via une api retournant des données au format JSON. Le backend est dockerisé. Les données de l’api
@@ -70,7 +70,7 @@ smartphone ou tablette.
 Critères d’évaluation du projet :
 Architecture Modules, import/export 30%
 Utilisation des modules / packages
-« .dart » pour structurer le code – les
+« .dart » pour structurer le code - les
 modules ont un rôle clairement
 identifié. Séparation affichage-
 fonctionnalités-requêtes-master-détail…
