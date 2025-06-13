@@ -18,10 +18,12 @@
 - ❌ pour dans les pages, demander au provider d'auth pour savoir si un user est connecté
 - ✅ publier sur docketu
 - ✅ lien github
-- ❌ modifier les routes d'api poru que ca soit cohérent
+- ✅ modifier les routes d'api poru que ca soit cohérent
 - ❌ écrire les README
-  - 1
-  - 2
-  - 3
+  - ✅ JS
+  - ✅ FLUTTER
+  - ❌ PHP
+  - ⌛Final
+  - ❌Les exporter en pdf
 ---
 ✅

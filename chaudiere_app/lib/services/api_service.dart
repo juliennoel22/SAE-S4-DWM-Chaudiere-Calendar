@@ -17,7 +17,9 @@ class ApiService {
   }
 
   static Future<EventDetailModel> fetchEventDetail(int id) async {
-    final response = await http.get(Uri.parse('http://localhost:8080/api/event/$id'));
+    final response = await http.get(
+      Uri.parse('http://localhost:8080/api/event/$id'),
+    );
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return EventDetailModel.fromJson(data);
@@ -27,7 +29,9 @@ class ApiService {
   }
 
   static Future<List<String>> fetchCategories() async {
-    final response = await http.get(Uri.parse('http://localhost:8080/api/category'));
+    final response = await http.get(
+      Uri.parse('http://localhost:8080/api/categories'),
+    );
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data.map((c) => c['label'] as String).toList();
