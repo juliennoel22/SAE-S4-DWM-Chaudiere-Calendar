@@ -16,10 +16,14 @@ use Slim\Exception\HttpInternalServerErrorException;
 Eloquent::init(__DIR__ . '/calendar.db.conf.ini');
 
 // Initialiser Twig
-$twig = Twig::create(__DIR__ . '/../webui/views/', [
-    'cache' => __DIR__ . '/../webui/views/cache',
-    'auto_reload' => true
-]);
+$twig = Twig::create(
+    __DIR__ . '/../webui/views/',
+//     , 
+//     [
+//     'cache' => __DIR__ . '/../webui/views/cache',
+[    'auto_reload' => true]
+// ]
+);
 
 // Créer l'application Slim
 $app = AppFactory::create();
