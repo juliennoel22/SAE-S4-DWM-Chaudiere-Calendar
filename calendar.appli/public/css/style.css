@@ -2,7 +2,7 @@
 :root {
     --primary-color: #FF6347;
     /* Nouvelle couleur de branding (corail) */
-    --secondary-color: #cba300;
+    --secondary-color: #a56256;
     --text-color: #333;
     --light-text: #666;
     --background: #f1f1f1;
@@ -119,6 +119,11 @@ form:not(.form-unpublished) {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: var(--shadow);
+}
+
+.form-creation{
+    max-width: 1000px !important;
+
 }
 
 form label {
