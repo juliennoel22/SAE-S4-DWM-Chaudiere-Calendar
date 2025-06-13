@@ -19,9 +19,11 @@ use calendar\core\webui\actions\DisplayUserFormAction;
 use calendar\core\webui\actions\RedirectAction;
 use calendar\core\webui\actions\LogoutAction;
 use calendar\core\webui\actions\EventDetailsAction;
+use calendar\core\webui\actions\HomeAction;
 
 return function ($app): object {
     $app->get('/', RedirectAction::class)->setName('redirect');
+    $app->get('/home', HomeAction::class)->setName('home');
     $app->get('/logout', LogoutAction::class)->setName('logout');
 
     $app->get('/signin', GetSignInFormAction::class)->setName('signin_get');

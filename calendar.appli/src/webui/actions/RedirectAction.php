@@ -11,7 +11,7 @@ class RedirectAction
     {
         if (isset($_SESSION['user'])){
              return $response
-            ->withHeader('Location', '/categories')
+            ->withHeader('Location', '/home')
             ->withStatus(302);
         }
         return $response

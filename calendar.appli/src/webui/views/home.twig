@@ -1,0 +1,18 @@
+{# filepath: calendar.appli/src/webui/views/home.twig #}
+{% extends 'base.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<h2 class="text-primary-color">Bienvenue sur La Chaudière Agenda</h2>
+<p>Consultez les événements culturels à venir, gérez-les facilement via l'administration.</p>
+
+<div class="d-flex gap-3 my-4">
+    <a href="{{ url_for('categories') }}" class="btn btn-primary-custom">
+        <i class="fas fa-list"></i> Voir les catégories
+    </a>
+    <a href="{{ url_for('events') }}" class="btn btn-primary-custom">
+        <i class="fas fa-calendar"></i> Voir tous les événements
+    </a>
+</div>
+{% endblock %}

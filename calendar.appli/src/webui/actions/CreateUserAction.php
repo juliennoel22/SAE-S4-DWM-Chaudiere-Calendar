@@ -34,7 +34,7 @@ class CreateUserAction
         try{
             $data = $request->getParsedBody();
             $this->userService->createUser($data['email'], $data['password']);
-            return $response->withHeader('Location', '/categories')->withStatus(302);
+            return $response->withHeader('Location', '/home')->withStatus(302);
         }catch(UserServiceException $e){
             throw new HttpInternalServerErrorException($request, $e->getMessage());
         }
