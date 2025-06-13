@@ -29,5 +29,5 @@ export async function fetchCategories() {
 }
 
 export async function fetchEventsByCategory(categoryId) {
-    return await fetchFromApi(`/category/${categoryId}/events`);
+    return await fetchFromApi(`/categories/${categoryId}/events`);
 }

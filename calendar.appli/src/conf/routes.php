@@ -49,7 +49,7 @@ return function ($app): object {
 
     $app->get('/api/categories', ApiCategoryListAction::class)->setName('api_category_list');
     $app->get('/api/events', ApiEventListAction::class)->setName('api_event_list');
-    $app->get('/api/category/{id}/events', ApiEventListByCategoryAction::class)->setName('api_event_list_by_category');
+    $app->get('/api/categories/{id}/events', ApiEventListByCategoryAction::class)->setName('api_event_list_by_category');
     $app->get('/api/event/{id}', ApiEventDetailAction::class)->setName('api_event_detail');
 
     $app->get('/api', ApiIndexAction::class)->setName('api_index');
