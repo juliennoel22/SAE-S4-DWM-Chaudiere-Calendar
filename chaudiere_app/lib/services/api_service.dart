@@ -27,7 +27,7 @@ class ApiService {
   }
 
   static Future<List<String>> fetchCategories() async {
-    final response = await http.get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:8888/api/category'));
+    final response = await http.get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:8888/api/categories'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data.map((c) => c['label'] as String).toList();
