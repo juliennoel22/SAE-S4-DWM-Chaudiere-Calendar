@@ -111,6 +111,12 @@ docker compose up -d --build
 > ```
 
 - Le **backend** (administration + API) sera accessible sur [http://localhost:8888/](http://localhost:8888/)
+
+<div style="background-color: #d32f2f; color: white; padding: 12px 16px; border-radius: 6px; font-weight: bold; margin: 16px 0;">
+⚠️ Accès administration :<br>
+Utilisez l'identifiant <span style="color: #ffd600; font-style: italic;">adm@email.fr</span> et le mot de passe <span style="color: #ffd600; font-style: italic;">adm</span> pour vous connecter à l'interface d'administration du backend.
+</div>
+
 - Le **frontend web** sera accessible sur [http://localhost:3333/](http://localhost:3333/)
 
 Vous pouvez aussi accéder directement aux applications via :
