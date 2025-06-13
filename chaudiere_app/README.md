@@ -14,16 +14,20 @@ Application mobile Flutter pour consulter les événements culturels proposés p
 - Liste alphabétique avec titre, type et date.
 - Chargement dynamique depuis l'API.
 - Thème clair/sombre intégré.
+![image](https://github.com/user-attachments/assets/68fb436a-2141-4094-87a5-31564dc218fe)
 
 
 ### 🔍 Recherche d’événements
 - Recherche en direct par titre.
 - Résultats mis à jour dynamiquement.
+![image](https://github.com/user-attachments/assets/ef742770-b92d-4b9f-bcb0-b7a277211f3f)
 
 
 
 ### 🧭 Filtrage par catégorie
 - Boutons ou menu déroulant pour filtrer les événements selon leur type (concert, expo, etc.).
+  ![image](https://github.com/user-attachments/assets/f853b5b4-778a-4b62-b2bd-2a1eed059a3c)
+
 
 ### 🔃 Tri des événements
 - Tri personnalisable :
@@ -34,9 +38,11 @@ Application mobile Flutter pour consulter les événements culturels proposés p
 ### 📄 Vue détail d’un événement
 - Affichage complet d’un événement : description, lieu, date, image, type, etc.
 - Navigation Master/Détail fluide.
+![image](https://github.com/user-attachments/assets/ba25cafb-79de-4d56-b8f1-5134d5dd9e82)
 
 ### 🌗 Thème clair / sombre
 - Toggle entre mode clair et mode sombre via Provider.
+![image](https://github.com/user-attachments/assets/e5192622-d70b-4c81-b173-88b2b1248c12)
 
 
 ## 🧱 Structure du projet
