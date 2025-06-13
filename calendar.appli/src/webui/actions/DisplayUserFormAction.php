@@ -17,6 +17,9 @@ class DisplayUserFormAction
         if (!isset($_SESSION['user'])) {
             throw new HttpForbiddenException($request, "Vous devez être connecté pour accéder à cette page");
         }
+        if (!($_SESSION['is_adm'] ?? false)) {
+            throw new HttpForbiddenException($request, "Vous n'avez pas les droits pour accéder à cette page");
+        }
         try{
             $csrfToken = CsrfTokenProvider::generate();
             $twig = Twig::fromRequest($request);

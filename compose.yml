@@ -2,7 +2,7 @@ services:
   app:
     build: .
     ports:
-      - "8080:80"
+      - "8888:80"
     volumes:
       - .:/var/www/html
     environment:
@@ -17,9 +17,9 @@ services:
     volumes:
       - ./calendar.appli.web:/usr/src/app
     command: >
-      sh -c "npm install -g serve && serve -s . -l 3000"
+      sh -c "npm install -g serve && serve -s . -l 3333"
     ports:
-      - "3000:3000"
+      - "3333:3333"
   
   db:
     image: mysql:8.0

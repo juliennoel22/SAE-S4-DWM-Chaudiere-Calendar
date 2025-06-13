@@ -21,7 +21,7 @@ export async function fetchEvents() {
 }
 
 export async function fetchEventById(id) {
-    return await fetchFromApi(`/event/${id}`);
+    return await fetchFromApi(`/evenements/${id}`);
 }
 
 export async function fetchCategories() {
