@@ -13,20 +13,18 @@ use Illuminate\Database\QueryException;
 class AuthnProvider implements AuthnProviderInterface
 {
 
-    public function signin(string $userEmail, string $password): void
+    public function signin(string $userEmail, string $password): User
     {
         try {
             $user = User::where('email', $userEmail)->first();
 
-        if (!$user) {
-            throw new UserNotFoundException("Utilisateur introuvable");
-        }
-        if (!password_verify($password, $user->password_hash)) {
-            throw new AuthnException("Mot de passe incorrect");
-        }
-        session_regenerate_id(true); // Sécurité
-        $_SESSION['user'] = $user->email;
-        $_SESSION['is_adm'] = $user->is_superadmin;
+            if (!$user) {
+                throw new UserNotFoundException("Utilisateur introuvable");
+            }
+            if (!password_verify($password, $user->password_hash)) {
+                throw new AuthnException("Mot de passe incorrect");
+            }
+            return $user;
 
         } catch (QueryException $e) {
             throw new ProviderInternalErrorException($e->getMessage());
