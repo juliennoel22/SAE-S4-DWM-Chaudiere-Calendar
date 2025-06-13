@@ -29,21 +29,13 @@
         <h1 class="mb-0 me-auto">
             <a class="text-light text-decoration-none" href="{{ url_for('redirect') }}">LaChaudière.net</a>
         </h1>
-        {% if user is not none and is_superadmin == true %}
-            <a class="btn btn-sm btn-outline-light ms-3" href="{{ url_for('create_user_form') }}">Créer un admin</a>
-        {% endif %}
+       {% if user is not none %}
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-light ms-3">
+            Déconnexion
+            </a>
+        {% endif %}   
     </div>
 </header>
-
-<nav class="navbar navbar-expand-lg navbar-light mb-4">
-<div class="container">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% if user is not none %}
-            <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
-        {% endif %}    
-    </ul>
-</div>
-</nav>
 
 <main class="container">
     {% block content %}

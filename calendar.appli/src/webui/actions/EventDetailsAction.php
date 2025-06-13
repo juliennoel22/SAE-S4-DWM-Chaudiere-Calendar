@@ -33,7 +33,8 @@ class EventDetailsAction
             $view = Twig::fromRequest($request);
             return $view->render($response, 'details_event.twig', [
                 'event' => $event,
-                'user' => $_SESSION['user'] ?? null
+                'user' => $_SESSION['user'] ?? null,
+                'is_superadmin' => $_SESSION['is_adm']
             ]);
         } catch (EventServiceException $e) {
             throw new HttpNotFoundException($request, $e->getMessage());
