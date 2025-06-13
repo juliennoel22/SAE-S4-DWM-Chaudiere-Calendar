@@ -13,7 +13,6 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpForbiddenException;
 use Slim\Exception\HttpInternalServerErrorException;
 
-session_start();
 // Charger Eloquent avec le fichier de configuration
 Eloquent::init(__DIR__ . '/calendar.db.conf.ini');
 
