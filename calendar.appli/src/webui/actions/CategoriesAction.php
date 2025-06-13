@@ -26,7 +26,6 @@ class CategoriesAction
         try{
             $categories = $this->categorieService->getAllCategories();
 
-            $user = $_SESSION['user'] ?? null;
             $routeParser = $request->getAttribute('routeParser');
             $createCategoryUrl = $routeParser ? $routeParser->urlFor('categoryCreation') : '/create/category';
 
@@ -35,8 +34,7 @@ class CategoriesAction
             return $twig->render($response, 'categories.twig', [
                 'categories' => $categories,
                 'createCategoryUrl' => $createCategoryUrl,
-                'user' => $user,
-                'is_superadmin' => $_SESSION['is_adm']
+                'is_superadmin' => $_SESSION['is_adm'] ?? false
 
             ]);
         }catch(CategoryException $e){
