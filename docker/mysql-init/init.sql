@@ -142,7 +142,6 @@ INSERT INTO event_images (event_id, url)
 VALUES (
         1,
         'https://images.pexels.com/photos/9419405/pexels-photo-9419405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-
     ),
     (
         2,
@@ -155,4 +154,177 @@ VALUES (
     (
         4,
         'https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    );
+INSERT INTO events (
+        title,
+        description_md,
+        description_html,
+        price,
+        date_start,
+        date_end,
+        time,
+        category_id,
+        published,
+        created_by
+    )
+VALUES (
+        'Festival du Printemps',
+        'Un festival pour célébrer le printemps.',
+        'Un festival pour célébrer le printemps.',
+        '12€',
+        '2025-04-10',
+        NULL,
+        '15:00:00',
+        1,
+        TRUE,
+        1
+    ),
+    (
+        'Atelier Peinture',
+        'Atelier créatif pour tous.',
+        'Atelier créatif pour tous.',
+        '8€',
+        '2025-05-05',
+        NULL,
+        '14:00:00',
+        2,
+        TRUE,
+        2
+    ),
+    (
+        'Conférence Climat',
+        'Discussion sur le changement climatique.',
+        'Discussion sur le changement climatique.',
+        'Gratuit',
+        '2025-06-22',
+        NULL,
+        '17:00:00',
+        3,
+        TRUE,
+        1
+    ),
+    (
+        'Soirée Théâtre',
+        'Pièce comique pour toute la famille.',
+        'Pièce comique pour toute la famille.',
+        '10€',
+        '2025-07-01',
+        NULL,
+        '20:30:00',
+        4,
+        FALSE,
+        2
+    ),
+    (
+        'Concert Rock',
+        'Groupe local en live.',
+        'Groupe local en live.',
+        '15€',
+        '2025-07-15',
+        NULL,
+        '21:00:00',
+        1,
+        TRUE,
+        1
+    ),
+    (
+        'Expo Sculpture',
+        'Exposition de sculptures modernes.',
+        'Exposition de sculptures modernes.',
+        '5€',
+        '2025-08-10',
+        '2025-08-20',
+        NULL,
+        2,
+        TRUE,
+        2
+    ),
+    (
+        'Conférence Santé',
+        'Prévention et bien-être.',
+        'Prévention et bien-être.',
+        'Gratuit',
+        '2025-09-12',
+        NULL,
+        '18:00:00',
+        3,
+        TRUE,
+        1
+    ),
+    (
+        'Spectacle Magie',
+        'Show de magie pour enfants.',
+        'Show de magie pour enfants.',
+        '7€',
+        '2025-10-05',
+        NULL,
+        '16:00:00',
+        4,
+        TRUE,
+        2
+    ),
+    (
+        'Concert Classique',
+        'Orchestre symphonique.',
+        'Orchestre symphonique.',
+        '20€',
+        '2025-11-20',
+        NULL,
+        '19:30:00',
+        1,
+        TRUE,
+        1
+    ),
+    (
+        'Expo Photo Nature',
+        'Beauté de la nature en images.',
+        'Beauté de la nature en images.',
+        'Gratuit',
+        '2025-12-01',
+        '2025-12-15',
+        NULL,
+        2,
+        TRUE,
+        2
+    );
+INSERT INTO event_images (event_id, url)
+VALUES (
+        5,
+        'https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        6,
+        'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        7,
+        'https://images.pexels.com/photos/167964/pexels-photo-167964.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        8,
+        'https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        9,
+        'https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        10,
+        'https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        11,
+        'https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        12,
+        'https://images.pexels.com/photos/167964/pexels-photo-167964.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        13,
+        'https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ),
+    (
+        14,
+        'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=800'
     );
