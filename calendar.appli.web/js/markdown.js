@@ -3,6 +3,11 @@ export function convertMarkdownToHtml(markdown) {
 
     let html = markdown;
 
+    // on a choisir de faire simple en utilisant des regex pour convertir le markdown en HTML.
+    // En pratique, on utiliserait une bibliothèque comme marked.js ou showdown.js pour une conversion plus robuste.
+    // C'est une implémentation basique et ne gère pas tous les cas du Markdown, il pourrait être pertinent d'utiliser une bibliothèque 
+    // pour des cas plus complexes.
+
     // Titres
     html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
     html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');

@@ -1,7 +1,7 @@
 export class Event {
     constructor(data) {
         this.id = data.id;
-        this.titre = data.titre; // Changed from this.title to this.titre
+        this.titre = data.titre;
         this.date = data.date || data.date_debut;
         this.category = data.categorie || data.category;
         this.description = data.description_md || '';
@@ -22,7 +22,7 @@ export class Event {
         if (this.hasImage()) {
             return this.images[0];
         }
-        return 'https://via.placeholder.com/300x200?text=Pas+d%27image';
+        return '';
     }
 
     getFormattedDate() {
