@@ -19,11 +19,11 @@
 - ✅ publier sur docketu
 - ✅ lien github
 - ✅ modifier les routes d'api poru que ca soit cohérent
-- ❌ écrire les README
+- ✅ écrire les README
   - ✅ JS
   - ✅ FLUTTER
-  - ❌ PHP
+  - ✅ PHP
   - ✅Final
-  - ❌Les exporter en pdf
+- ❌Les exporter en pdf
 ---
 ✅

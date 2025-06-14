@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/logo.png" alt="Logo La Chaudière Calendar" width="100"/>
+  <img src="./stock/images/logo.png" alt="Logo La Chaudière Calendar" width="100"/>
 </p>
 
 # SAE-S4-DWM - La Chaudière Calendar
@@ -78,7 +78,7 @@ SAE-S4-DWM-Chaudiere-Calendar/
 
 **Capture d’écran - Application Web**
   
-![Webapp](./images/front-js-screen.png)
+![Webapp](./stock/images/front-js-screen.png)
 
 ---
 
@@ -141,14 +141,14 @@ flutter run
 - Chaque sous-projet contient son propre README pour plus de détails techniques.
 ### 📄 Liens vers les README des sous-projets
 
-- [Backend – LaChaudièreAgenda.core](./calendar.appli/README.md)
-- [Application Web – LaChaudièreAgenda.web](./calendar.appli.web/README.md)
-- [Application Mobile – LaChaudiere.app](./chaudiere_app/README.md)
+- [Backend - LaChaudièreAgenda.core](./calendar.appli/README.md)
+- [Application Web - LaChaudièreAgenda.web](./calendar.appli.web/README.md)
+- [Application Mobile - LaChaudiere.app](./chaudiere_app/README.md)
 ---
 
 ## 📝 Fonctionnalités détaillées
 
-### Backend – LaChaudièreAgenda.core
+### Backend - LaChaudièreAgenda.core
 
 - Interface HTML d'administration sécurisée (authentification requise)
 - Création, modification, suppression d'événements
@@ -167,7 +167,7 @@ flutter run
 
 ---
 
-### Application Web – LaChaudièreAgenda.web
+### Application Web - LaChaudièreAgenda.web
 
 - SPA JavaScript (ES modules)
 - Affichage de la liste des événements (mois courant, passés, futurs)
@@ -185,7 +185,7 @@ flutter run
 
 ---
 
-### Application Mobile – LaChaudiere.app
+### Application Mobile - LaChaudiere.app
 
 - Application Flutter (Dart)
 - Affichage de la liste des événements (titre, catégorie, date)

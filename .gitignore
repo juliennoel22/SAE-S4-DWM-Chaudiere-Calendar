@@ -50,3 +50,5 @@ locked
 chaudiere_app/linux/
 chaudiere_app/macos/
 chaudiere_app/windows/
+
+consignes/*.txt

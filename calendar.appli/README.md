@@ -1,4 +1,4 @@
-# Backend PHP Dockerisé – **LaChaudièreAgenda.core**
+# Backend PHP Dockerisé - **LaChaudièreAgenda.core**
 
 > Projet backend PHP structuré, sécurisé et conteneurisé, construit avec **Slim Framework**, **Twig** et une architecture modulaire orientée métier.
 > * Réalisé par **[Julien](https://github.com/juliennoel22)**, **[Mirac](https://github.com/MiracOK)**, **[Guillaume](https://github.com/Kemayu)** et **[Vivien](https://github.com/Vivienhrm)**
