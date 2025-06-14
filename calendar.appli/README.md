@@ -95,9 +95,15 @@ Ce backend est **totalement dockerisé** pour faciliter le déploiement et l’i
    ```
 
 2. **Construire et lancer**
-   ```bash
-   docker compose up --build -d
-   ```
+    - Avant de lancer la commande Docker, il faut d'abord exécuter la commande suivante pour installer les dépendances PHP :
+
+      ```bash
+      composer install
+      ```
+    - Puis, lancez les containers (assurez vous d'avoir lancer docker sur votre ordinateur)
+      ```bash
+      docker compose up --build -d
+      ```
 
 3. **Accéder à l'application**
    ```bash

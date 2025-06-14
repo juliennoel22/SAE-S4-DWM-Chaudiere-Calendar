@@ -98,6 +98,12 @@ SAE-S4-DWM-Chaudiere-Calendar/
 
 ## 🚀 Lancer le projet
 
+Avant de lancer la commande Docker, il faut d'abord exécuter la commande suivante pour installer les dépendances PHP :
+
+```bash
+composer install
+```
+
 Depuis la racine du projet, exécutez :
 
 ```bash
