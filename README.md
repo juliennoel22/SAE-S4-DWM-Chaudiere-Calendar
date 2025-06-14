@@ -92,7 +92,7 @@ SAE-S4-DWM-Chaudiere-Calendar/
   - Navigation fluide Master/Détail
 
 **Capture d’écran - Application Mobile**  
-![Mobile app](./images/)
+![Mobile app](https://github.com/user-attachments/assets/ef742770-b92d-4b9f-bcb0-b7a277211f3f)
 
 ---
 
