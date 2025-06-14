@@ -34,8 +34,8 @@ class CategoriesAction
             return $twig->render($response, 'categories.twig', [
                 'categories' => $categories,
                 'createCategoryUrl' => $createCategoryUrl,
+                'user' => $_SESSION['user'] ?? null,
                 'is_superadmin' => $_SESSION['is_adm'] ?? false
-
             ]);
         }catch(CategoryException $e){
              throw new HttpInternalServerErrorException($request, $e->getMessage());

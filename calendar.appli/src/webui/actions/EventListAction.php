@@ -45,7 +45,8 @@ class EventListAction
             return $twig->render($response, 'list.twig', [
             'events' => $events,
             'categories' => $categories,
-            'selectedCategory' => $categoryId
+            'selectedCategory' => $categoryId,
+            'user' => $_SESSION['user'] ?? null
             ]);
         }catch(EventServiceException $e){
              throw new HttpInternalServerErrorException($request, $e->getMessage());

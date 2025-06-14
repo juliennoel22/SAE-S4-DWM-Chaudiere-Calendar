@@ -11,6 +11,8 @@ final class ApiIndexAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $view = Twig::fromRequest($request);
-        return $view->render($response, 'api_index.twig');
+        return $view->render($response, 'api_index.twig', [
+            'user' => $_SESSION['user'] ?? null
+        ]);
     }
 }

@@ -22,7 +22,8 @@ class DisplayCategoryFormAction
             $twig = Twig::fromRequest($request);
             return $twig->render($response, 'create_category_form.twig', [
                 'title' => 'Créer une catégorie',
-                'csrf_token' => $csrfToken
+                'csrf_token' => $csrfToken,
+                'user' => $_SESSION['user'] ?? null
             ]);
         }catch (CsrfTokenException $e){
             throw new HttpInternalServerErrorException($request, $e->getMessage());
