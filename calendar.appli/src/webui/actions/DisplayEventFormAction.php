@@ -36,7 +36,9 @@ class DisplayEventFormAction
             return $twig->render($response, 'create_event_form.twig', [
                 'title' => 'Créer un evenement',
                 'categories' => $categories,
-                'csrf_token' => $csrfToken
+                'csrf_token' => $csrfToken,
+                'user' => $_SESSION['user'] ?? null,
+                'is_superadmin' => $_SESSION['is_adm']
             ]);
         }catch (CsrfTokenException $e){
             throw new HttpInternalServerErrorException($request, $e->getMessage());
